@@ -1,13 +1,15 @@
-package kr.edcan.safood;
+package kr.edcan.safood.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import kr.edcan.safood.R;
+
+public class RecentActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_recent);
     }
 }
