@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.Noactionbar">
         <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".activity.AuthActivity" />
         <activity android:name=".activity.RecentActivity" />
@@ -20,13 +24,6 @@
         <activity android:name=".activity.FoodDicActivity" />
         <activity android:name=".activity.SearchHistoryActivity" />
         <activity android:name=".activity.SearchActivity" />
-        <activity android:name=".activity.TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>
