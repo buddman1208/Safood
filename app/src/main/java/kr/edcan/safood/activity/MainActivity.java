@@ -74,12 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     int tabColor = helper.colorCombine(Color.WHITE, colorPrimary, page);
                     int appbarColor = helper.colorCombine(Color.BLACK, Color.WHITE, page);
                     int titleTextColor = helper.colorCombine(Color.WHITE, colorPrimary, page);
-
+                    int backgroundColor = helper.colorCombine(Color.parseColor("#212121"), Color.WHITE, page);
                     binding.appbarlayout.setBackgroundColor(appbarColor);
                     binding.toolbar.setTitleTextColor(titleTextColor);
                     binding.tablayout.setTabTextColors(res.getColor(R.color.commonTextColor), tabColor);
                     binding.tablayout.setSelectedTabIndicatorColor(tabColor);
                     binding.appbarlayout.getBackground().setAlpha(((int) (page * 1000 / 19.6) + 204));
+                    binding.mainBackground.setBackgroundColor(backgroundColor);
                 }
                 if (currentCameraOpen) {
                     if (page >= 1) {
@@ -95,14 +96,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 binding.appbarlayout.setExpanded(true, true);
-//                if(position == 0){
-//                    binding.appbarlayout.getBackground().setAlpha(500);
-//                }
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
-                Log.e("asdf", "onPageScrollStateChanged : " + state);
             }
         });
     }
