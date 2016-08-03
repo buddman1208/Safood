@@ -5,7 +5,9 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.hardware.Camera;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,11 +21,13 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import java.io.IOException;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.databinding.ActivityMainBinding;
+import kr.edcan.safood.databinding.MainSearchBinding;
 import kr.edcan.safood.utils.SafoodHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,13 +36,17 @@ public class MainActivity extends AppCompatActivity {
     SafoodHelper helper;
     String[] titleArr = new String[]{"검색", "안전한 음식", "내 정보"};
     ActivityMainBinding binding;
+    MainSearchBinding mainSearchBinding;
     Camera mainCamera;
+    ViewPager pager;
+    RelativeLayout mainSearchFrame;
     CameraPreview mainCameraPreview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        mainSearchBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_search, null, true);
         setDefault();
         setCamera();
     }
@@ -51,32 +59,38 @@ public class MainActivity extends AppCompatActivity {
 
     private void setDefault() {
         helper = new SafoodHelper(getApplicationContext());
+        pager = (ViewPager) findViewById(R.id.mainPager);
         binding.mainPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         binding.tablayout.setupWithViewPager(binding.mainPager);
-        setSupportActionBar(binding.toolbar);
-        getSupportActionBar().setTitle(getString(R.string.app_name));
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
         binding.mainPager.setCurrentItem(1);
+        binding.mainPager.setOffscreenPageLimit(4);
+        binding.mainAppBarSearch.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        binding.mainAppBarSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), ));
+            }
+        });
         binding.mainPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Log.e("asdf", "onPageScrolled");
                 float page = position + positionOffset;
                 Resources res = getResources();
-                Log.e("asdf", "position : " + position);
-                Log.e("asdf", "positionoffset : " + positionOffset);
-                Log.e("asdf", "positionoffsetpixel : " + positionOffsetPixels);
-                Log.e("asdf", "page : " + (position + positionOffset));
                 if (page <= 1) {
                     int colorPrimary = res.getColor(R.color.colorPrimary);
                     int tabColor = helper.colorCombine(Color.WHITE, colorPrimary, page);
                     int appbarColor = helper.colorCombine(Color.BLACK, Color.WHITE, page);
+                    int titleBarColor = helper.colorCombine(Color.BLACK, colorPrimary, page);
                     int titleTextColor = helper.colorCombine(Color.WHITE, colorPrimary, page);
                     int backgroundColor = helper.colorCombine(Color.parseColor("#212121"), Color.WHITE, page);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        getWindow().setStatusBarColor(titleBarColor);
+                    }
                     binding.appbarlayout.setBackgroundColor(appbarColor);
-                    binding.toolbar.setTitleTextColor(titleTextColor);
+                    binding.mainAppBarTitle.setTextColor(titleTextColor);
+                    binding.toolbar.setBackgroundColor(appbarColor);
+                    binding.mainNavButton.setColorFilter(tabColor, PorterDuff.Mode.SRC_ATOP);
                     binding.tablayout.setTabTextColors(res.getColor(R.color.commonTextColor), tabColor);
                     binding.tablayout.setSelectedTabIndicatorColor(tabColor);
                     binding.appbarlayout.getBackground().setAlpha(((int) (page * 1000 / 19.6) + 204));
@@ -95,7 +109,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
+                Log.e("asdf", "pageSelected");
                 binding.appbarlayout.setExpanded(true, true);
+                binding.mainAppBarSearch.setEnabled(position == 0);
+                mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
+                mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
+                Log.e("asdf_pageseelcted", position + "");
             }
 
             @Override

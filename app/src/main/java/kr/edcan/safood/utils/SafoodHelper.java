@@ -26,16 +26,17 @@ public class SafoodHelper {
     public boolean checkCameraHardware() {
         return (c.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA));
     }
-    public Camera getCameraInstance(){
+
+    public Camera getCameraInstance() {
         return camera.open();
     }
 
-    public int colorCombine(int c1, int c2, float offset){
+    public int colorCombine(int c1, int c2, float offset) {
         int result;
         result = Color.rgb(
-                (int) (Color.red(c1) - (Color.red(c1) - Color.red(c2))*offset),
-                (int) (Color.green(c1) - (Color.green(c1) - Color.green(c2))*offset),
-                (int) (Color.blue(c1) - (Color.blue(c1) - Color.blue(c2))*offset)
+                (int) (Color.red(c1) - (Color.red(c1) - Color.red(c2)) * offset),
+                (int) (Color.green(c1) - (Color.green(c1) - Color.green(c2)) * offset),
+                (int) (Color.blue(c1) - (Color.blue(c1) - Color.blue(c2)) * offset)
         );
         return result;
     }
