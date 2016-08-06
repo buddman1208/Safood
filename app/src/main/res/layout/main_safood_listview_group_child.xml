@@ -1,0 +1,82 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/mainChildView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
+
+        <RelativeLayout
+            android:id="@+id/mainListChildIndicatorLayout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="3dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:orientation="vertical"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:id="@+id/mainListChildTopIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/mainListChildBottomIndicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorPrimary"></RelativeLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/mainListChildMiddleIndicator"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/circle_with_border" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/mainListChildIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/mainListChildIndicatorLayout"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_login_background" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_toRightOf="@id/mainListChildIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/mainListChildTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="채소 및 육류"
+                android:textColor="@color/commonHeadTextColor"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/mainListChildContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="채소 및 육류"
+                android:textColor="@color/commonTextColor"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

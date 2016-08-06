@@ -27,13 +27,10 @@ import android.widget.ExpandableListView;
 public class SlidingExpandableListView extends ExpandableListView {
 
 
-    @SuppressWarnings("unused")
-    private static final String TAG = AnimatedExpandableListAdapter.class.getSimpleName();
-
     /**
      * The duration of the expand/collapse animations
      */
-    private static final int ANIMATION_DURATION = 500;
+    private static final int ANIMATION_DURATION = 180;
 
     private AnimatedExpandableListAdapter adapter;
 

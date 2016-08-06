@@ -22,15 +22,21 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import kr.edcan.safood.R;
+import kr.edcan.safood.adapter.MainSafoodAdapter;
 import kr.edcan.safood.databinding.ActivityMainBinding;
 import kr.edcan.safood.databinding.MainSafoodBinding;
 import kr.edcan.safood.databinding.MainSearchBinding;
+import kr.edcan.safood.models.SafoodContentData;
+import kr.edcan.safood.models.SafoodTitleData;
 import kr.edcan.safood.utils.SafoodHelper;
 import kr.edcan.safood.views.SlidingExpandableListView;
 
@@ -191,66 +197,36 @@ public class MainActivity extends AppCompatActivity {
 
         private void setPage(View view, int position, LayoutInflater inflater) {
             switch (position) {
-                case 0:
-                    MainSafoodBinding binding = DataBindingUtil.inflate(inflater, R.layout.main_safood, null, true);]
-                    ArrayList<String> titleArr = new ArrayList<>();
-                    ArrayList<String> contentArr = new ArrayList<>();
-                    titleArr.add("asdf");
-                    titleArr.add("asdf");
-                    contentArr.add("asdfasdf");
-                    contentArr.add("asdfasdf");
-                    binding.mainExpandableListView.setAdapter(new BaseExpandableListAdapter() {
+                case 1:
+                    final SlidingExpandableListView listview = (SlidingExpandableListView) view.findViewById(R.id.mainExpandableListView);
+                    ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
+                    ArrayList<ArrayList<SafoodContentData>> contentArr = new ArrayList<>();
+                    for (int i = 0; i < 10; i++) {
+                        titleArr.add(new SafoodTitleData("m,", new Date()));
+                        ArrayList<SafoodContentData> data = new ArrayList<>();
+                        data.add(new SafoodContentData("asdf", new Date()));
+                        data.add(new SafoodContentData("asdf", new Date()));
+                        data.add(new SafoodContentData("asdf", new Date()));
+                        contentArr.add(data);
+                    }
+                    final MainSafoodAdapter adapter = new MainSafoodAdapter(getContext(), titleArr, contentArr);
+                    listview.setAdapter(adapter);
+                    listview.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
                         @Override
-                        public int getGroupCount() {
-                            return 0;
+                        public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                            View view = adapter.getGroupView(groupPosition, true, null, null);
+                            RelativeLayout bottomIndicator = (RelativeLayout) view.findViewById(R.id.mainListGroupBottomIndicator);
+                            if (listview.isGroupExpanded(groupPosition)) {
+                                bottomIndicator.setVisibility(View.INVISIBLE);
+                                listview.collapseGroupWithAnimation(groupPosition);
+                            } else {
+                                bottomIndicator.setVisibility(View.VISIBLE);
+                                listview.expandGroupWithAnimation(groupPosition);
+                            }
+                            return true;
                         }
 
-                        @Override
-                        public int getChildrenCount(int i) {
-                            return 0;
-                        }
-
-                        @Override
-                        public Object getGroup(int i) {
-                            return null;
-                        }
-
-                        @Override
-                        public Object getChild(int i, int i1) {
-                            return null;
-                        }
-
-                        @Override
-                        public long getGroupId(int i) {
-                            return 0;
-                        }
-
-                        @Override
-                        public long getChildId(int i, int i1) {
-                            return 0;
-                        }
-
-                        @Override
-                        public boolean hasStableIds() {
-                            return false;
-                        }
-
-                        @Override
-                        public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-                            return null;
-                        }
-
-                        @Override
-                        public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-                            return null;
-                        }
-
-                        @Override
-                        public boolean isChildSelectable(int i, int i1) {
-                            return false;
-                        }
                     });
-
             }
         }
     }

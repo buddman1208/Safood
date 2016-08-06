@@ -10,9 +10,8 @@ public class SafoodTitleData {
     private int contentSize;
     private Date lastModifiedDate;
 
-    public SafoodTitleData(String title, int contentSize, Date lastModifiedDate) {
+    public SafoodTitleData(String title, Date lastModifiedDate) {
         this.title = title;
-        this.contentSize = contentSize;
         this.lastModifiedDate = lastModifiedDate;
     }
 
