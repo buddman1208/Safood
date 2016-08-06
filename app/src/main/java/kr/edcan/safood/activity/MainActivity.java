@@ -21,22 +21,35 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.RelativeLayout;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.databinding.ActivityMainBinding;
+import kr.edcan.safood.databinding.MainSafoodBinding;
 import kr.edcan.safood.databinding.MainSearchBinding;
 import kr.edcan.safood.utils.SafoodHelper;
+import kr.edcan.safood.views.SlidingExpandableListView;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Variables
     public boolean currentCameraOpen = false;
-    SafoodHelper helper;
     String[] titleArr = new String[]{"검색", "안전한 음식", "내 정보"};
-    ActivityMainBinding binding;
-    MainSearchBinding mainSearchBinding;
+
+    // Helper, Utils
+    SafoodHelper helper;
+
+    // DataBindings
+    public ActivityMainBinding binding;
+    public MainSearchBinding mainSearchBinding;
+    public MainSafoodBinding mainSafoodBinding;
+
+    // Widgets
+    SlidingExpandableListView slidingListView;
     Camera mainCamera;
     ViewPager pager;
     RelativeLayout mainSearchFrame;
@@ -47,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainSearchBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_search, null, true);
+        mainSafoodBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_safood, null, true);
         setDefault();
         setCamera();
     }
@@ -171,12 +185,73 @@ public class MainActivity extends AppCompatActivity {
                     view = inflater.inflate(R.layout.main_info, container, false);
                     break;
             }
-            setPage(view);
+            setPage(view, getArguments().getInt(ARG_SECTION_NUMBER), inflater);
             return view;
         }
 
-        private void setPage(View view) {
+        private void setPage(View view, int position, LayoutInflater inflater) {
+            switch (position) {
+                case 0:
+                    MainSafoodBinding binding = DataBindingUtil.inflate(inflater, R.layout.main_safood, null, true);]
+                    ArrayList<String> titleArr = new ArrayList<>();
+                    ArrayList<String> contentArr = new ArrayList<>();
+                    titleArr.add("asdf");
+                    titleArr.add("asdf");
+                    contentArr.add("asdfasdf");
+                    contentArr.add("asdfasdf");
+                    binding.mainExpandableListView.setAdapter(new BaseExpandableListAdapter() {
+                        @Override
+                        public int getGroupCount() {
+                            return 0;
+                        }
 
+                        @Override
+                        public int getChildrenCount(int i) {
+                            return 0;
+                        }
+
+                        @Override
+                        public Object getGroup(int i) {
+                            return null;
+                        }
+
+                        @Override
+                        public Object getChild(int i, int i1) {
+                            return null;
+                        }
+
+                        @Override
+                        public long getGroupId(int i) {
+                            return 0;
+                        }
+
+                        @Override
+                        public long getChildId(int i, int i1) {
+                            return 0;
+                        }
+
+                        @Override
+                        public boolean hasStableIds() {
+                            return false;
+                        }
+
+                        @Override
+                        public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+                            return null;
+                        }
+
+                        @Override
+                        public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
+                            return null;
+                        }
+
+                        @Override
+                        public boolean isChildSelectable(int i, int i1) {
+                            return false;
+                        }
+                    });
+
+            }
         }
     }
 
