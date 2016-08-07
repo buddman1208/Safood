@@ -11,8 +11,6 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.Camera;
-import android.util.Log;
-import android.widget.Toast;
 
 public class SafoodHelper {
 

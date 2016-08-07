@@ -1,8 +1,6 @@
 package kr.edcan.safood.views;
 
 
-import java.util.ArrayList;
-import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,6 +17,9 @@ import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class defines an ExpandableListView which supports animations for
