@@ -21,10 +21,8 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -227,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     });
+                    break;
             }
         }
     }
