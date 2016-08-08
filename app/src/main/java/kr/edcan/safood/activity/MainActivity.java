@@ -114,6 +114,10 @@ public class MainActivity extends AppCompatActivity {
                     binding.tablayout.setSelectedTabIndicatorColor(tabColor);
                     binding.appbarlayout.getBackground().setAlpha(((int) (page * 1000 / 19.6) + 204));
                     binding.mainBackground.setBackgroundColor(backgroundColor);
+                } else {
+                    binding.appbarlayout.setBackgroundColor(Color.WHITE);
+                    binding.toolbar.setBackgroundColor(Color.WHITE);
+                    binding.mainBackground.setBackgroundColor(Color.WHITE);
                 }
                 if (currentCameraOpen) {
                     if (page >= 1) {
