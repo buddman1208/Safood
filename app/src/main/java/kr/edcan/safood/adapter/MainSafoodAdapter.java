@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -79,7 +80,7 @@ public class MainSafoodAdapter extends SlidingExpandableListView.AnimatedExpanda
         SafoodContentData data = contentArr.get(groupPosition).get(childPosition);
         binding.mainListChildTitle.setText(data.getTitle());
         binding.mainListChildContent.setText(data.getAddedDate().toLocaleString() + "에 추가됨");
-        if (childPosition == contentArr.get(groupPosition).size() - 1) {
+        if (isLastChild) {
             binding.mainListChildBottomIndicator.setVisibility(View.INVISIBLE);
         }
         return binding.getRoot();
@@ -93,6 +94,6 @@ public class MainSafoodAdapter extends SlidingExpandableListView.AnimatedExpanda
 
     @Override
     public boolean isChildSelectable(int i, int i1) {
-        return false;
+        return true;
     }
 }

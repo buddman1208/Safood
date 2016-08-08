@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -224,6 +225,13 @@ public class MainActivity extends AppCompatActivity {
                             return true;
                         }
 
+                    });
+                    listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+                        @Override
+                        public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                            Toast.makeText(getContext(), "asdf", Toast.LENGTH_SHORT).show();
+                            return true;
+                        }
                     });
                     break;
             }

@@ -8,7 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import kr.edcan.safood.R;
 
@@ -85,6 +89,7 @@ public class CartaTagView extends TextView {
         this.fullMode = fullMode;
         requestLayout();
     }
+
 
     public void setFullMode(boolean fullMode) {
         this.fullMode = fullMode;
