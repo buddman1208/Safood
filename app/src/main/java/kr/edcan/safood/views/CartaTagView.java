@@ -8,13 +8,11 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.Gravity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import kr.edcan.safood.R;
+
 
 /**
  * Created by JunseokOh on 2016. 8. 6..
@@ -55,6 +53,7 @@ public class CartaTagView extends TextView {
 
     public void setView() {
         setTextColor((fullMode) ? Color.WHITE : color);
+        setGravity(Gravity.CENTER);
     }
 
     @Override
@@ -62,9 +61,9 @@ public class CartaTagView extends TextView {
         setView();
         bgPaint = new Paint();
         bgPaint.setColor(color);
-        bgPaint.setStyle(Paint.Style.FILL);
+        bgPaint.setStyle(Paint.Style.STROKE);
         innerPaint = new Paint();
-        innerPaint.setColor(Color.WHITE);
+        innerPaint.setColor(color);
         innerPaint.setStyle(Paint.Style.FILL);
         Point center = new Point(width / 2, height / 2);
         int strokeWidth = getResources().getDimensionPixelSize(R.dimen.stroke_width);
@@ -76,10 +75,10 @@ public class CartaTagView extends TextView {
         int right = center.x + (innerW / 2);
         int bottom = center.y + (innerH / 2);
 
-        RectF bgRect = new RectF(0.0f, 0.0f, width, height);
+        RectF bgRect = new RectF(0.0f, 0.0f, width - strokeWidth, height - strokeWidth);
         RectF innerRect = new RectF(left, top, right, bottom);
         canvas.drawRoundRect(bgRect, height / 2, height / 2, bgPaint);
-        if (!fullMode)
+        if (fullMode)
             canvas.drawRoundRect(innerRect, innerH / 2, innerH / 2, innerPaint);
         super.onDraw(canvas);
     }
