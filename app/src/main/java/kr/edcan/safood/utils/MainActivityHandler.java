@@ -33,13 +33,13 @@ import android.util.Log;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
-import com.google.zxing.client.android.camera.CameraManager;
 
 import java.util.Collection;
 import java.util.Map;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.activity.MainActivity;
+import kr.edcan.safood.camera.CameraManager;
 
 /**
  * This class handles all the messaging which comprises the state machine for capture.
