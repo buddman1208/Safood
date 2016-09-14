@@ -28,6 +28,7 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Random;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.adapter.MainSafoodAdapter;
@@ -71,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setCamera() {
-//        mainCameraPreview = new CameraPreview(getApplicationContext(), mainCamera);
         currentCameraOpen = true;
-//        binding.mainCameraFrame.addView(mainCameraPreview);
     }
 
     private void setDefault() {
@@ -93,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
         binding.mainPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                Log.e("asdf", "onPageScrolled");
                 float page = position + positionOffset;
                 Resources res = getResources();
                 if (page <= 1) {
@@ -132,12 +130,10 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Log.e("asdf", "pageSelected");
                 binding.appbarlayout.setExpanded(true, true);
                 binding.mainAppBarSearch.setEnabled(position == 0);
                 mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
                 mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
-                Log.e("asdf_pageseelcted", position + "");
             }
 
             @Override
