@@ -56,10 +56,8 @@ public class MainActivity extends AppCompatActivity {
 
     // Widgets
     SlidingExpandableListView slidingListView;
-    Camera mainCamera;
     ViewPager pager;
     RelativeLayout mainSearchFrame;
-    CameraPreview mainCameraPreview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,11 +66,6 @@ public class MainActivity extends AppCompatActivity {
         mainSearchBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_search, null, true);
         mainSafoodBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_safood, null, true);
         setDefault();
-        setCamera();
-    }
-
-    private void setCamera() {
-        currentCameraOpen = true;
     }
 
     private void setDefault() {
@@ -117,14 +110,6 @@ public class MainActivity extends AppCompatActivity {
                     binding.toolbar.setBackgroundColor(Color.WHITE);
                     binding.mainBackground.setBackgroundColor(Color.WHITE);
                 }
-                if (currentCameraOpen) {
-                    if (page >= 1) {
-                        stopCamera();
-                    }
-                } else {
-                    if (page < 1)
-                        openCamera();
-                }
             }
 
 
@@ -147,23 +132,6 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private void openCamera() {
-        if (mainCamera == null) {
-            currentCameraOpen = true;
-            mainCameraPreview.setCameraInstance(mainCameraPreview.mHolder);
-        }
-    }
-
-    public void stopCamera() {
-        if (mainCamera != null) {
-            currentCameraOpen = false;
-            mainCamera.stopPreview();
-            mainCamera.setPreviewCallback(null);
-            mainCamera.lock();
-            mainCamera.release();
-            mainCamera = null;
-        }
-    }
 
     public static class MainFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "pageNumber";
@@ -263,94 +231,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    class CameraPreview extends SurfaceView implements SurfaceHolder.Callback {
-        public SurfaceHolder mHolder;
-        Camera camera;
-
-        public CameraPreview(Context context, Camera cameraInstance) {
-            super(context);
-            mHolder = getHolder();
-            mHolder.addCallback(this);
-            mHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-            this.camera = cameraInstance;
-        }
-
-        @Override
-        public void surfaceCreated(SurfaceHolder holder) {
-            Log.e("asdf", "surfaceCreated");
-            setCameraInstance(holder);
-        }
-
-        public void setCameraInstance(SurfaceHolder holder) {
-            camera = helper.getCameraInstance();
-            try {
-                camera.reconnect();
-                Camera.Parameters parameters = camera.getParameters();
-                if (getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
-                    parameters.set("orientation", "portrait");
-                    camera.setDisplayOrientation(90);
-                    parameters.setRotation(90);
-                } else {
-                    parameters.set("orientation", "landscape");
-                    camera.setDisplayOrientation(0);
-                    parameters.setRotation(0);
-                }
-                camera.setParameters(parameters);
-                camera.setPreviewDisplay(holder);
-                camera.startPreview();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
-            setCameraInstance(holder);
-//            Log.e("asdf", "surfaceChanged");
-//            if (mHolder.getSurface() == null) {
-//                return;
-//            }
-//            try {
-//                camera.stopPreview();
-//            } catch (Exception e) {
-//            }
-//            try {
-//                Camera.Parameters parameters = camera.getParameters();
-//                Camera.Size size = getBestPreviewSize(w, h);
-//                parameters.setPreviewSize(size.width, size.height);
-//                camera.setParameters(parameters);
-//                camera.setPreviewDisplay(mHolder);
-//                camera.startPreview();
-//
-//            } catch (Exception e) {
-//            }
-        }
-
-        @Override
-        public void surfaceDestroyed(SurfaceHolder holder) {
-            Log.e("asdf", "surfaceDestroyed");
-
-        }
-
-        private Camera.Size getBestPreviewSize(int width, int height) {
-            Camera.Size result = null;
-            Camera.Parameters p = camera.getParameters();
-            for (Camera.Size size : p.getSupportedPreviewSizes()) {
-                if (size.width <= width && size.height <= height) {
-                    if (result == null) {
-                        result = size;
-                    } else {
-                        int resultArea = result.width * result.height;
-                        int newArea = size.width * size.height;
-
-                        if (newArea > resultArea) {
-                            result = size;
-                        }
-                    }
-                }
-            }
-            return result;
-
-        }
-    }
 }

@@ -25,10 +25,6 @@ public class SafoodHelper {
         return (c.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA));
     }
 
-    public Camera getCameraInstance() {
-        return camera.open();
-    }
-
     public int colorCombine(int c1, int c2, float offset) {
         int result;
         result = Color.rgb(
