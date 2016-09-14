@@ -1,14 +1,22 @@
 package kr.edcan.safood.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.hardware.Camera;
+import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +24,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -25,9 +34,15 @@ import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.DecodeHintType;
+import com.google.zxing.Result;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
 
 import kr.edcan.safood.R;
@@ -40,10 +55,34 @@ import kr.edcan.safood.models.SafoodTitleData;
 import kr.edcan.safood.utils.SafoodHelper;
 import kr.edcan.safood.views.SlidingExpandableListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
-    // Variables
-    public boolean currentCameraOpen = false;
+
+    private CameraManager cameraManager;
+    private CaptureActivityHandler handler;
+    private Result savedResultToShow;
+    private ViewfinderView viewfinderView;
+    private Result lastResult;
+    private boolean hasSurface;
+    private IntentSource source;
+    private Collection<BarcodeFormat> decodeFormats;
+    private Map<DecodeHintType, ?> decodeHints;
+    private String characterSet;
+    private InactivityTimer inactivityTimer;
+    private AmbientLightManager ambientLightManager;
+
+    ViewfinderView getViewfinderView() {
+        return viewfinderView;
+    }
+
+    public Handler getHandler() {
+        return handler;
+    }
+
+    CameraManager getCameraManager() {
+        return cameraManager;
+    }
+
     String[] titleArr = new String[]{"검색", "안전한 음식", "내 정보"};
 
     // Helper, Utils
@@ -60,12 +99,52 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout mainSearchFrame;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        cameraManager = new CameraManager(getApplication());
+        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
+        viewfinderView.setCameraManager(cameraManager);
+        viewfinderView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cameraManager.autoFocus();
+            }
+        });
+        handler = null;
+        lastResult = null;
+        resetStatusView();
+        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+        SurfaceHolder surfaceHolder = surfaceView.getHolder();
+        if (hasSurface) {
+            initCamera(surfaceHolder);
+        } else {
+            surfaceHolder.addCallback(this);
+        }
+        ambientLightManager.start(cameraManager);
+        inactivityTimer.onResume();
+        Intent intent = getIntent();
+        source = IntentSource.NONE;
+        decodeFormats = null;
+        characterSet = null;
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mainSearchBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_search, null, true);
         mainSafoodBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_safood, null, true);
+        setCameraDefault();
         setDefault();
+    }
+
+    private void setCameraDefault() {
+        hasSurface = false;
+        inactivityTimer = new InactivityTimer(this);
+        ambientLightManager = new AmbientLightManager(this);
+
     }
 
     private void setDefault() {
@@ -127,12 +206,53 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onPause() {
+        if (handler != null) {
+            handler.quitSynchronously();
+            handler = null;
+        }
+        inactivityTimer.onPause();
+        ambientLightManager.stop();
+        cameraManager.closeDriver();
+        if (!hasSurface) {
+            SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+            SurfaceHolder surfaceHolder = surfaceView.getHolder();
+            surfaceHolder.removeCallback(this);
+        }
         super.onPause();
     }
 
+    @Override
+    protected void onDestroy() {
+        inactivityTimer.shutdown();
+        super.onDestroy();
+    }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (source == IntentSource.NATIVE_APP_INTENT) {
+                    Log.e("asdf", "asdf");
+                    finish();
+                    return true;
+                }
+                if ((source == IntentSource.NONE || source == IntentSource.ZXING_LINK) && lastResult != null) {
+                    restartPreviewAfterDelay(0L);
+                    return true;
+                }
+                break;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                cameraManager.setTorch(false);
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                cameraManager.setTorch(true);
+                return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
     public static class MainFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "pageNumber";
 
@@ -204,6 +324,132 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+
+    private void decodeOrStoreSavedBitmap(Bitmap bitmap, Result result) {
+        // Bitmap isn't used yet -- will be used soon
+        if (handler == null) {
+            savedResultToShow = result;
+        } else {
+            if (result != null) {
+                savedResultToShow = result;
+            }
+            if (savedResultToShow != null) {
+                Message message = Message.obtain(handler, R.id.decode_succeeded, savedResultToShow);
+                handler.sendMessage(message);
+            }
+            savedResultToShow = null;
+        }
+    }
+
+    @Override
+    public void surfaceCreated(SurfaceHolder holder) {
+        if (holder == null) {
+            Log.e(TAG, "*** WARNING *** surfaceCreated() gave us a null surface!");
+        }
+        if (!hasSurface) {
+            hasSurface = true;
+            initCamera(holder);
+        }
+    }
+
+    @Override
+    public void surfaceDestroyed(SurfaceHolder holder) {
+        hasSurface = false;
+    }
+
+    @Override
+    public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+
+    }
+
+    /**
+     * A valid barcode has been found, so give an indication of success and show the results.
+     *
+     * @param rawResult   The contents of the barcode.
+     * @param scaleFactor amount by which thumbnail was scaled
+     * @param barcode     A greyscale bitmap of the camera data which was decoded.
+     */
+    public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
+        inactivityTimer.onActivity();
+        lastResult = rawResult;
+        ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
+        handleDecodeInternally(rawResult, resultHandler, barcode);
+    }
+
+    // Put up our own UI for how to handle the decoded contents.
+    private void handleDecodeInternally(Result rawResult, ResultHandler resultHandler, Bitmap barcode) {
+        CharSequence displayContents = resultHandler.getDisplayContents();
+        viewfinderView.setVisibility(View.GONE);
+        showResultDialog(displayContents.toString());
+    }
+
+    private void initCamera(SurfaceHolder surfaceHolder) {
+        if (surfaceHolder == null) {
+            throw new IllegalStateException("No SurfaceHolder provided");
+        }
+        if (cameraManager.isOpen()) {
+            Log.w(TAG, "initCamera() while already open -- late SurfaceView callback?");
+            return;
+        }
+        try {
+            cameraManager.openDriver(surfaceHolder);
+            // Creating the handler starts the preview, which can also throw a RuntimeException.
+            if (handler == null) {
+                handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
+            }
+            decodeOrStoreSavedBitmap(null, null);
+        } catch (IOException ioe) {
+            Log.w(TAG, ioe);
+            displayFrameworkBugMessageAndExit();
+        } catch (RuntimeException e) {
+            // Barcode Scanner has seen crashes in the wild of this variety:
+            // java.?lang.?RuntimeException: Fail to connect to camera service
+            Log.w(TAG, "Unexpected error initializing camera", e);
+            displayFrameworkBugMessageAndExit();
+        }
+    }
+
+    private void displayFrameworkBugMessageAndExit() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.app_name));
+        builder.setMessage(getString(R.string.msg_camera_framework_bug));
+        builder.setPositiveButton(R.string.button_ok, new FinishListener(this));
+        builder.setOnCancelListener(new FinishListener(this));
+        builder.show();
+    }
+
+    private void showResultDialog(String resultData) {
+        MaterialDialog builder = new MaterialDialog.Builder(this)
+                .title(getString(R.string.app_name))
+                .content(resultData)
+                .positiveText("확인")
+                .onPositive(new MaterialDialog.SingleButtonCallback() {
+                    @Override
+                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                        restartPreviewAfterDelay(0);
+                    }
+                })
+                .show();
+        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                restartPreviewAfterDelay(0);
+            }
+        });
+    }
+
+    public void restartPreviewAfterDelay(long delayMS) {
+        if (handler != null) {
+            handler.sendEmptyMessageDelayed(R.id.restart_preview, delayMS);
+        }
+        resetStatusView();
+    }
+
+    private void resetStatusView() {
+        viewfinderView.setVisibility(View.VISIBLE);
+        lastResult = null;
     }
 
     public class MainPagerAdapter extends FragmentPagerAdapter {
