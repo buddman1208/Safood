@@ -3,6 +3,7 @@
     <kr.edcan.safood.views.SlidingExpandableListView
         android:id="@+id/mainExpandableListView"
         android:layout_width="match_parent"
+        android:background="#FFF"
         android:layout_height="match_parent"
         android:divider="@null"
         android:groupIndicator="@null"

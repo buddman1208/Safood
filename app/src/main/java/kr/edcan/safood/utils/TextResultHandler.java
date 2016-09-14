@@ -16,27 +16,35 @@
 
 package kr.edcan.safood.utils;
 
+import android.app.Activity;
+
 import com.google.zxing.Result;
 import com.google.zxing.client.result.ParsedResult;
-import com.google.zxing.client.result.ResultParser;
-
-import kr.edcan.safood.activity.MainActivity;
 
 /**
- * Manufactures Android-specific handlers based on the barcode content's type.
+ * This class handles TextParsedResult as well as unknown formats. It's the fallback handler.
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-public final class ResultHandlerFactory {
-  private ResultHandlerFactory() {
+public final class TextResultHandler extends ResultHandler {
+
+  public TextResultHandler(Activity activity, ParsedResult result, Result rawResult) {
+    super(activity, result, rawResult);
   }
 
-  public static ResultHandler makeResultHandler(MainActivity activity, Result rawResult) {
-    ParsedResult result = parseResult(rawResult);
-        return new TextResultHandler(activity, result, rawResult);
+  @Override
+  public int getButtonCount() {
+    return 0;
   }
 
-  private static ParsedResult parseResult(Result rawResult) {
-    return ResultParser.parseResult(rawResult);
+  @Override
+  public int getButtonText(int index) {
+    return 0;
+  }
+
+  @Override
+  public void handleButtonPress(int index) {
+
   }
 }
+

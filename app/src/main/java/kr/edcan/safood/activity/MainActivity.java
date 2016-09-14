@@ -1,16 +1,13 @@
 package kr.edcan.safood.activity;
 
-import android.app.AlertDialog;
-import android.content.Context;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
-import android.hardware.Camera;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +18,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -33,6 +31,8 @@ import android.widget.ExpandableListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
@@ -42,7 +42,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
-import java.util.Random;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.adapter.MainSafoodAdapter;
@@ -62,23 +61,25 @@ import kr.edcan.safood.utils.SafoodHelper;
 import kr.edcan.safood.views.SlidingExpandableListView;
 import kr.edcan.safood.views.ViewfinderView;
 
-public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
+public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
-    private final String TAG = this.getLocalClassName();
+    private final String TAG = "TAG";
 
-
-    private CameraManager cameraManager;
-    private MainActivityHandler handler;
-    private Result savedResultToShow;
-    private ViewfinderView viewfinderView;
-    private Result lastResult;
-    private boolean hasSurface;
-    private IntentSource source;
-    private Collection<BarcodeFormat> decodeFormats;
-    private Map<DecodeHintType, ?> decodeHints;
-    private String characterSet;
-    private InactivityTimer inactivityTimer;
-    private AmbientLightManager ambientLightManager;
+    public static CameraManager cameraManager;
+    public static void performClick(){
+        cameraManager.autoFocus();
+    }
+    public MainActivityHandler handler;
+    public Result savedResultToShow;
+    public ViewfinderView viewfinderView;
+    public Result lastResult;
+    public boolean hasSurface;
+    public IntentSource source;
+    public Collection<BarcodeFormat> decodeFormats;
+    public Map<DecodeHintType, ?> decodeHints;
+    public String characterSet;
+    public InactivityTimer inactivityTimer;
+    public AmbientLightManager ambientLightManager;
 
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         return handler;
     }
 
-    CameraManager getCameraManager() {
+    public CameraManager getCameraManager() {
         return cameraManager;
     }
 
@@ -150,6 +151,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     }
 
     private void setCameraDefault() {
+
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
         ambientLightManager = new AmbientLightManager(this);
@@ -205,8 +207,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             public void onPageSelected(int position) {
                 binding.appbarlayout.setExpanded(true, true);
                 binding.mainAppBarSearch.setEnabled(position == 0);
-                mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
-                mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
+//                mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
+//                mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
             }
 
             @Override
@@ -262,6 +264,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
         return super.onKeyDown(keyCode, event);
     }
+
     public static class MainFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "pageNumber";
 
@@ -293,6 +296,15 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
         private void setPage(View view, int position, LayoutInflater inflater) {
             switch (position) {
+                case 0:
+                    RelativeLayout layout = (RelativeLayout) view.findViewById(R.id.touch);
+                    layout.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            MainActivity.performClick();
+                        }
+                    });
+                    break;
                 case 1:
                     final SlidingExpandableListView listview = (SlidingExpandableListView) view.findViewById(R.id.mainExpandableListView);
                     ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
@@ -421,12 +433,11 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     }
 
     private void displayFrameworkBugMessageAndExit() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getString(R.string.app_name));
-        builder.setMessage(getString(R.string.msg_camera_framework_bug));
-        builder.setPositiveButton(R.string.button_ok, new FinishListener(this));
-        builder.setOnCancelListener(new FinishListener(this));
-        builder.show();
+        MaterialDialog builder = new MaterialDialog.Builder(this)
+                .title(getString(R.string.app_name))
+                .content("기기의 카메라에 접근하는 중에 문제가 발생했습니다.")
+                .positiveText("확인")
+                .show();
     }
 
     private void showResultDialog(String resultData) {

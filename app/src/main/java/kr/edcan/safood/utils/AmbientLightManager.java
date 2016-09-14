@@ -47,7 +47,7 @@ public final class AmbientLightManager implements SensorEventListener {
     this.context = context;
   }
 
-  void start(CameraManager cameraManager) {
+  public void start(CameraManager cameraManager) {
     this.cameraManager = cameraManager;
     SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
     if (FrontLightMode.readPref(sharedPrefs) == FrontLightMode.AUTO) {
@@ -59,7 +59,7 @@ public final class AmbientLightManager implements SensorEventListener {
     }
   }
 
-  void stop() {
+  public void stop() {
     if (lightSensor != null) {
       SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
       sensorManager.unregisterListener(this);

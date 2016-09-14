@@ -7,15 +7,18 @@
         android:layout_height="match_parent"
         android:background="#FFF">
 
-        <SurfaceView android:id="@+id/preview_view"
+        <SurfaceView
+            android:id="@+id/preview_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <kr.edcan.safood.views.ViewfinderView
             android:id="@+id/viewfinder_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
+
         <android.support.design.widget.CoordinatorLayout
+            android:background="@android:color/transparent"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -84,6 +87,8 @@
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/mainPager"
+                android:background="@android:color/transparent"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />

@@ -17,4 +17,9 @@
     <style name="AppTheme.TabStyle" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">17sp</item>
     </style>
+    <style name="CaptureTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
 </resources>
