@@ -7,11 +7,14 @@
         android:layout_height="match_parent"
         android:background="#FFF">
 
-        <FrameLayout
-            android:id="@+id/mainCameraFrame"
+        <SurfaceView android:id="@+id/preview_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
+        <kr.edcan.safood.views.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <android.support.design.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">

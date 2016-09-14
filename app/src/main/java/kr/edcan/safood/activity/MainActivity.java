@@ -11,7 +11,6 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.hardware.Camera;
-import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,19 +46,29 @@ import java.util.Random;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.adapter.MainSafoodAdapter;
+import kr.edcan.safood.camera.CameraManager;
 import kr.edcan.safood.databinding.ActivityMainBinding;
 import kr.edcan.safood.databinding.MainSafoodBinding;
 import kr.edcan.safood.databinding.MainSearchBinding;
 import kr.edcan.safood.models.SafoodContentData;
 import kr.edcan.safood.models.SafoodTitleData;
+import kr.edcan.safood.utils.AmbientLightManager;
+import kr.edcan.safood.utils.InactivityTimer;
+import kr.edcan.safood.utils.IntentSource;
+import kr.edcan.safood.utils.MainActivityHandler;
+import kr.edcan.safood.utils.ResultHandler;
+import kr.edcan.safood.utils.ResultHandlerFactory;
 import kr.edcan.safood.utils.SafoodHelper;
 import kr.edcan.safood.views.SlidingExpandableListView;
+import kr.edcan.safood.views.ViewfinderView;
 
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback{
 
+    private final String TAG = this.getLocalClassName();
+
 
     private CameraManager cameraManager;
-    private CaptureActivityHandler handler;
+    private MainActivityHandler handler;
     private Result savedResultToShow;
     private ViewfinderView viewfinderView;
     private Result lastResult;
@@ -71,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private InactivityTimer inactivityTimer;
     private AmbientLightManager ambientLightManager;
 
-    ViewfinderView getViewfinderView() {
+    public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
 
@@ -397,7 +406,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             cameraManager.openDriver(surfaceHolder);
             // Creating the handler starts the preview, which can also throw a RuntimeException.
             if (handler == null) {
-                handler = new CaptureActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
+                handler = new MainActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
             }
             decodeOrStoreSavedBitmap(null, null);
         } catch (IOException ioe) {

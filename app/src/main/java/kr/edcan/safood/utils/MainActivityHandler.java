@@ -40,6 +40,7 @@ import java.util.Map;
 import kr.edcan.safood.R;
 import kr.edcan.safood.activity.MainActivity;
 import kr.edcan.safood.camera.CameraManager;
+import kr.edcan.safood.views.ViewfinderResultPointCallback;
 
 /**
  * This class handles all the messaging which comprises the state machine for capture.
@@ -61,11 +62,11 @@ public final class MainActivityHandler extends Handler {
         DONE
     }
 
-    MainActivityHandler(MainActivity activity,
-                        Collection<BarcodeFormat> decodeFormats,
-                        Map<DecodeHintType, ?> baseHints,
-                        String characterSet,
-                        CameraManager cameraManager) {
+    public MainActivityHandler(MainActivity activity,
+                               Collection<BarcodeFormat> decodeFormats,
+                               Map<DecodeHintType, ?> baseHints,
+                               String characterSet,
+                               CameraManager cameraManager) {
         this.activity = activity;
         decodeThread = new DecodeThread(activity, decodeFormats, baseHints, characterSet,
                 new ViewfinderResultPointCallback(activity.getViewfinderView()));
