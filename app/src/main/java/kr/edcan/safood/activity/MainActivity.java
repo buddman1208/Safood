@@ -197,6 +197,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             public void onPageSelected(int position) {
                 binding.appbarlayout.setExpanded(true, true);
                 binding.mainAppBarSearch.setEnabled(position == 0);
+                if (position == 0) restartPreviewAfterDelay(0);
 //                mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
 //                mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
             }
@@ -406,10 +407,14 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
      * @param barcode     A greyscale bitmap of the camera data which was decoded.
      */
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
-        inactivityTimer.onActivity();
-        lastResult = rawResult;
-        ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
-        handleDecodeInternally(rawResult, resultHandler, barcode);
+        Log.e("asdf", "Catch");
+        if (binding.mainPager.getCurrentItem() == 0) {
+            Log.e("asdf", "on 0");
+            inactivityTimer.onActivity();
+            lastResult = rawResult;
+            ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
+            handleDecodeInternally(rawResult, resultHandler, barcode);
+        }
     }
 
     // Put up our own UI for how to handle the decoded contents.
