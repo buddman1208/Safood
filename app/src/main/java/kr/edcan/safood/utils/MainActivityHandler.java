@@ -148,7 +148,7 @@ public final class MainActivityHandler extends Handler {
         quit.sendToTarget();
         try {
             // Wait at most half a second; should be enough time, and onPause() will timeout quickly
-            decodeThread.join(500L);
+            decodeThread.join(100L);
         } catch (InterruptedException e) {
             // continue
         }

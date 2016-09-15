@@ -66,12 +66,14 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     private final String TAG = "TAG";
 
     public static CameraManager cameraManager;
-    public static void performClick(){
+
+    public static void performClick() {
         cameraManager.autoFocus();
     }
+
     public MainActivityHandler handler;
     public Result savedResultToShow;
-    public ViewfinderView viewfinderView;
+    public static ViewfinderView viewfinderView;
     public Result lastResult;
     public boolean hasSurface;
     public IntentSource source;
@@ -113,18 +115,10 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         super.onResume();
 
         cameraManager = new CameraManager(getApplication());
-        viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-        viewfinderView.setCameraManager(cameraManager);
-        viewfinderView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cameraManager.autoFocus();
-            }
-        });
         handler = null;
         lastResult = null;
         resetStatusView();
-        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+        SurfaceView surfaceView = binding.previewView;
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         if (hasSurface) {
             initCamera(surfaceHolder);
@@ -133,11 +127,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
         ambientLightManager.start(cameraManager);
         inactivityTimer.onResume();
-        Intent intent = getIntent();
         source = IntentSource.NONE;
         decodeFormats = null;
         characterSet = null;
-
     }
 
     @Override
@@ -151,11 +143,9 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     }
 
     private void setCameraDefault() {
-
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
         ambientLightManager = new AmbientLightManager(this);
-
     }
 
     private void setDefault() {
@@ -228,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         ambientLightManager.stop();
         cameraManager.closeDriver();
         if (!hasSurface) {
-            SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
+            SurfaceView surfaceView = binding.previewView;
             SurfaceHolder surfaceHolder = surfaceView.getHolder();
             surfaceHolder.removeCallback(this);
         }
@@ -277,6 +267,20 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
 
         @Override
+        public void onResume() {
+            super.onResume();
+            if (viewfinderView != null) {
+                viewfinderView.setCameraManager(cameraManager);
+                viewfinderView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        cameraManager.autoFocus();
+                    }
+                });
+            }
+        }
+
+        @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             View view = null;
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
@@ -304,6 +308,15 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                             MainActivity.performClick();
                         }
                     });
+                    viewfinderView = (ViewfinderView) view.findViewById(R.id.viewfinder_view);
+                    viewfinderView.setCameraManager(cameraManager);
+                    viewfinderView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            cameraManager.autoFocus();
+                        }
+                    });
+
                     break;
                 case 1:
                     final SlidingExpandableListView listview = (SlidingExpandableListView) view.findViewById(R.id.mainExpandableListView);
@@ -416,7 +429,6 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         }
         try {
             cameraManager.openDriver(surfaceHolder);
-            // Creating the handler starts the preview, which can also throw a RuntimeException.
             if (handler == null) {
                 handler = new MainActivityHandler(this, decodeFormats, decodeHints, characterSet, cameraManager);
             }
@@ -425,8 +437,6 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
             Log.w(TAG, ioe);
             displayFrameworkBugMessageAndExit();
         } catch (RuntimeException e) {
-            // Barcode Scanner has seen crashes in the wild of this variety:
-            // java.?lang.?RuntimeException: Fail to connect to camera service
             Log.w(TAG, "Unexpected error initializing camera", e);
             displayFrameworkBugMessageAndExit();
         }
@@ -468,7 +478,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     }
 
     private void resetStatusView() {
-        viewfinderView.setVisibility(View.VISIBLE);
+        if (viewfinderView != null) viewfinderView.setVisibility(View.VISIBLE);
         lastResult = null;
     }
 
