@@ -111,7 +111,8 @@ public final class ViewfinderView extends View {
         canvas.drawRect(frame.right + 1, frame.top, width, frame.bottom + 1, paint);
         canvas.drawRect(0, frame.bottom + 1, width, height, paint);
 
-        canvas.drawRoundRect(frame.left, frame.top, frame.right, frame.bottom,10, 10, whitePaint);
+        canvas.drawRect(frame.left, frame.top, frame.right, frame.bottom, whitePaint);
+//        canvas.drawRoundRect(frame.left, frame.top, frame.right, frame.bottom,10, 10, whitePaint);
         canvas.drawText("바코드가 사각형 안에 들어오도록 촬영해 주세요.", width/2, frame.bottom+100, text);
 
         if (resultBitmap != null) {
