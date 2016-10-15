@@ -41,6 +41,7 @@
         <activity android:name=".activity.FoodDicActivity" />
         <activity android:name=".activity.SearchHistoryActivity" />
         <activity android:name=".activity.SearchActivity" />
+        <activity android:name=".activity.SettingActivity"></activity>
     </application>
 
 </manifest>
