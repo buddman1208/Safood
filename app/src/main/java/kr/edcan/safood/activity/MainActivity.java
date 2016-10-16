@@ -43,6 +43,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
+import kotlin.internal.InlineOnly;
 import kr.edcan.safood.R;
 import kr.edcan.safood.adapter.MainSafoodAdapter;
 import kr.edcan.safood.camera.CameraManager;
@@ -95,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
         return cameraManager;
     }
 
-    String[] titleArr = new String[]{"검색", "안전한 음식", "내 정보"};
+    String[] titleArr = new String[]{"검색", "안전한 음식", "그룹 메모", "음식 백과", "내 정보"};
 
     // Helper, Utils
     SafoodHelper helper;
@@ -198,8 +199,6 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                 binding.appbarlayout.setExpanded(true, true);
                 binding.mainAppBarSearch.setEnabled(position == 0);
                 if (position == 0) restartPreviewAfterDelay(0);
-//                mainSearchFrame = (RelativeLayout) binding.mainPager.findViewById(R.id.mainPhotoLoadingFrame);
-//                mainSearchFrame.setVisibility((position == 0) ? View.GONE : View.VISIBLE);
             }
 
             @Override
@@ -292,6 +291,12 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
                     view = inflater.inflate(R.layout.main_safood, container, false);
                     break;
                 case 2:
+                    view = inflater.inflate(R.layout.main_groupmemo, container, false);
+                    break;
+                case 3:
+                    view = inflater.inflate(R.layout.main_foodencyclopedia, container, false);
+                    break;
+                case 4:
                     view = inflater.inflate(R.layout.main_info, container, false);
                     break;
             }
@@ -501,7 +506,7 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
 
         @Override
         public int getCount() {
-            return 3;
+            return 5;
         }
 
         @Override
