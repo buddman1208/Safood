@@ -5,6 +5,10 @@
     <color name="colorAccent">#4484f6</color>
     <color name="commonTextColor">#a9a9a9</color>
     <color name="commonHeadTextColor">#5B5C5C</color>
+    <color name="textColorDark">#99000000</color>
+    <color name="textColorSub">#55000000</color>
+    <color name="textColor">#99000000</color>
+    <color name="dividerColor">#22000000</color>
 
     <color name="contents_text">#ff000000</color>
     <color name="encode_view">#ffffffff</color>
