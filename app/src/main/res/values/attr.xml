@@ -3,5 +3,7 @@
     <declare-styleable name="CartaTagView">
         <attr name="themeColor" format="reference|color" />
         <attr name="fullMode" format="reference|boolean" />
+        <attr name="textThemeColor" format="reference|color" />
+        <attr name="textThemeColorEnabled" format="reference|boolean"/>
     </declare-styleable>
 </resources>

@@ -1,5 +1,6 @@
 package kr.edcan.safood.views;
 
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -19,7 +20,9 @@ import kr.edcan.safood.R;
  */
 public class CartaTagView extends TextView {
     boolean fullMode = false;
+    boolean textColorEnabled = false;
     int color = Color.BLACK;
+    int textColor = Color.WHITE;
     int height, width;
 
     private Paint innerPaint, bgPaint;
@@ -41,45 +44,52 @@ public class CartaTagView extends TextView {
     private void setTypedArray(TypedArray array) {
         fullMode = array.getBoolean(R.styleable.CartaTagView_fullMode, false);
         color = array.getColor(R.styleable.CartaTagView_themeColor, Color.BLACK);
+        textColor = array.getColor(R.styleable.CartaTagView_textThemeColor, Color.BLACK);
+        textColorEnabled = array.getBoolean(R.styleable.CartaTagView_textThemeColorEnabled, false);
         array.recycle();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        height = getDefaultSize(getSuggestedMinimumHeight(), heightMeasureSpec);
-        width = getDefaultSize(getSuggestedMinimumWidth(), widthMeasureSpec);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        height = getMeasuredHeight();
+        width = getMeasuredWidth();
     }
 
     public void setView() {
-        setTextColor((fullMode) ? Color.WHITE : color);
+        if (!textColorEnabled) setTextColor((fullMode) ? Color.WHITE : color);
+        else setTextColor(textColor);
         setGravity(Gravity.CENTER);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         setView();
-        bgPaint = new Paint();
-        bgPaint.setColor(color);
-        bgPaint.setStyle(Paint.Style.STROKE);
-        innerPaint = new Paint();
-        innerPaint.setColor(color);
-        innerPaint.setStyle(Paint.Style.FILL);
         Point center = new Point(width / 2, height / 2);
         int strokeWidth = getResources().getDimensionPixelSize(R.dimen.stroke_width);
         int innerH = height - strokeWidth;
         int innerW = width - strokeWidth;
+        bgPaint = new Paint();
+        bgPaint.setColor(color);
+        bgPaint.setStyle(Paint.Style.STROKE);
+        bgPaint.setAntiAlias(true);
+        bgPaint.setStrokeWidth(strokeWidth);
+        innerPaint = new Paint();
+        innerPaint.setAntiAlias(true);
+        innerPaint.setColor(color);
+        innerPaint.setStyle(Paint.Style.FILL);
 
         int left = center.x - (innerW / 2);
         int top = center.y - (innerH / 2);
         int right = center.x + (innerW / 2);
         int bottom = center.y + (innerH / 2);
 
-        RectF bgRect = new RectF(0.0f, 0.0f, width - strokeWidth, height - strokeWidth);
+        RectF bgRect = new RectF(0.0f + strokeWidth, 0.0f + strokeWidth, width - strokeWidth, height - strokeWidth);
         RectF innerRect = new RectF(left, top, right, bottom);
-        canvas.drawRoundRect(bgRect, height / 2, height / 2, bgPaint);
         if (fullMode)
             canvas.drawRoundRect(innerRect, innerH / 2, innerH / 2, innerPaint);
+        else canvas.drawRoundRect(bgRect, height / 2, height / 2, bgPaint);
+
         super.onDraw(canvas);
     }
 
@@ -97,6 +107,11 @@ public class CartaTagView extends TextView {
 
     public void setShapeStyle(boolean fullMode, String colorStr) {
         this.color = Color.parseColor(colorStr);
+        requestLayout();
+    }
+    public void setTextColorForceFully(int color){
+        this.textColorEnabled = true;
+        this.textColor = color;
         requestLayout();
     }
 
