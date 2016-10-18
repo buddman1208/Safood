@@ -9,7 +9,6 @@ package kr.edcan.safood.utils;
 import android.content.Context;
 import android.net.ConnectivityManager;
 
-import java.net.NetworkInterface;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

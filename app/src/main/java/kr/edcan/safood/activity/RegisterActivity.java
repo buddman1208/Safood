@@ -19,6 +19,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
+    Call<User> registerUser;
     ActivityRegisterBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +47,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(this, "비밀번호가 일치하지 않습니다!", Toast.LENGTH_SHORT).show();
             } else {
                 registerUser = NetworkHelper.getNetworkInstance().registerUser(
-                        binding.registerName.getText().toString().trim(), binding.registerPhoneInput.getText().toString().trim(),
-                        binding.registerPassword.getText().toString(), binding.registerRePassword.getText().toString().trim(),
+                        binding.registerName.getText().toString().trim(),
+                        binding.registerPassword.getText().toString(),
                         binding.registerEmail.getText().toString().trim()
                 );
                 registerUser.enqueue(new Callback<User>() {
