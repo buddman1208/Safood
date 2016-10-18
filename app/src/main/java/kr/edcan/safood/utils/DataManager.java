@@ -22,12 +22,9 @@ public class DataManager {
     * */
 
     /* Data Keys */
-    private static String BUCKET_SCHEMA = "bucket";
-    private static String HAS_ACTIVE_BUCKET = "hasbucket";
     private static String USER_SCHEMA = "user_schema";
     private static String HAS_ACTIVE_USER = "hasactive";
     private static String LOGIN_TYPE = "login_type";
-    private static String FACEBOOK_TOKEN = "facebook_token";
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private Context context;
@@ -40,11 +37,6 @@ public class DataManager {
 
     public void save(String key, String data) {
         editor.putString(key, data);
-        editor.apply();
-    }
-
-    public void saveFacebookCredential(String facebookToken) {
-        editor.putString(FACEBOOK_TOKEN, facebookToken);
         editor.apply();
     }
 
@@ -62,12 +54,6 @@ public class DataManager {
             user.setUserType(userType);
             return Pair.create(true, user);
         } else return Pair.create(false, null);
-    }
-
-    public String getFacebookUserCredential() {
-        if (preferences.getBoolean(HAS_ACTIVE_USER, false) && preferences.getInt(LOGIN_TYPE, -1) == 0) {
-            return preferences.getString(FACEBOOK_TOKEN, "");
-        } else return "";
     }
 
     public void removeAllData() {
