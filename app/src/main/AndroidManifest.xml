@@ -48,7 +48,8 @@
         <activity android:name=".activity.GroupSetActivity" />
         <activity android:name=".activity.GroupGenerateActivity" />
         <activity android:name=".activity.GroupSearchActivity" />
-        <activity android:name=".activity.AllergicExceptionSetActivity"></activity>
+        <activity android:name=".activity.AllergicExceptionSetActivity" />
+        <activity android:name=".activity.AllergicExceptionSelectActivity"></activity>
     </application>
 
 </manifest>
