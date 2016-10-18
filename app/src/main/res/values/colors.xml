@@ -7,6 +7,7 @@
     <color name="commonHeadTextColor">#5B5C5C</color>
     <color name="textColorDark">#99000000</color>
     <color name="textColorSub">#55000000</color>
+    <color name="textColorSubWhite">#99FFFFFF</color>
     <color name="textColor">#99000000</color>
     <color name="dividerColor">#22000000</color>
 
