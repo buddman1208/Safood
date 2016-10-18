@@ -56,6 +56,7 @@ import kr.edcan.safood.databinding.MainSearchBinding;
 import kr.edcan.safood.models.SafoodContentData;
 import kr.edcan.safood.models.SafoodTitleData;
 import kr.edcan.safood.utils.AmbientLightManager;
+import kr.edcan.safood.utils.DataManager;
 import kr.edcan.safood.utils.InactivityTimer;
 import kr.edcan.safood.utils.IntentSource;
 import kr.edcan.safood.utils.MainActivityHandler;
@@ -67,14 +68,11 @@ import kr.edcan.safood.views.ViewfinderView;
 
 public class MainActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
-    private final String TAG = "TAG";
-
+    private final String TAG = "Safood";
     public static CameraManager cameraManager;
-
     public static void performClick() {
         cameraManager.autoFocus();
     }
-
     public MainActivityHandler handler;
     public Result savedResultToShow;
     public static ViewfinderView viewfinderView;
@@ -86,23 +84,22 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     public String characterSet;
     public InactivityTimer inactivityTimer;
     public AmbientLightManager ambientLightManager;
-
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
-
     public Handler getHandler() {
         return handler;
     }
-
     public CameraManager getCameraManager() {
         return cameraManager;
     }
+
 
     String[] titleArr = new String[]{"검색", "안전한 음식", "그룹 메모", "음식 백과", "내 정보"};
 
     // Helper, Utils
     SafoodHelper helper;
+    DataManager manager;
 
     // DataBindings
     public ActivityMainBinding binding;
@@ -155,6 +152,8 @@ public class MainActivity extends AppCompatActivity implements SurfaceHolder.Cal
     }
 
     private void setDefault() {
+        manager = new DataManager(getApplicationContext());
+        if(manager.getActiveUser().second.getGroupid().equals("")) startActivity(new Intent(getApplicationContext(), GroupSelect));
         helper = new SafoodHelper(getApplicationContext());
         pager = (ViewPager) findViewById(R.id.mainPager);
         binding.mainPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
