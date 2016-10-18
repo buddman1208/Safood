@@ -21,6 +21,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     Call<User> registerUser;
     ActivityRegisterBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,14 +32,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.register:
-
+                checkRegister();
                 break;
             case R.id.cancel:
                 finish();
         }
     }
+
     private void checkRegister() {
         if (StringUtils.fullFilled(binding.registerEmail, binding.registerName, binding.registerPassword, binding.registerPasswordRe)) {
             if (!StringUtils.validEmail(binding.registerEmail)) {

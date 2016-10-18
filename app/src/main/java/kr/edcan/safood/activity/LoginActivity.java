@@ -58,10 +58,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     switch (response.code()) {
                         case 200:
                             manager.saveUserInfo(response.body());
-                            Toast.makeText(LoginActivity.this, response.body().getName() + " 님 환영합니다!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, response.body().getUsername() + " 님 환영합니다!", Toast.LENGTH_SHORT).show();
                             break;
                         case 400:
                             Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다!", Toast.LENGTH_SHORT).show();
+                            break;
                         default:
                             Toast.makeText(LoginActivity.this, "서버와의 연동에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
                             Log.e("asdf", response.code() + "");
