@@ -19,11 +19,11 @@ public interface NetworkInterface {
 
     @POST("/auth/login")
     @FormUrlEncoded
-    Call<User> nativeLogin(@Field("email") String email, @Field("password") String password);
+    Call<User> nativeLogin(@Field("userid") String email, @Field("password") String password);
 
     @POST("/auth/login/auto")
     @FormUrlEncoded
-    Call<User> authenticateUser(@Field("token") String token);
+    Call<User> authenticateUser(@Field("userid") String userid, @Field("apikey") String token);
 
     @POST("/auth/register")
     @FormUrlEncoded
