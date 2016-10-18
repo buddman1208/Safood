@@ -16,15 +16,10 @@ import com.google.gson.Gson;
 import kr.edcan.safood.models.User;
 
 public class DataManager {
-    /* Login Type
-    * 0 Facebook
-    * 1: Native
-    * */
 
     /* Data Keys */
     private static String USER_SCHEMA = "user_schema";
     private static String HAS_ACTIVE_USER = "hasactive";
-    private static String LOGIN_TYPE = "login_type";
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
     private Context context;
@@ -40,8 +35,7 @@ public class DataManager {
         editor.apply();
     }
 
-    public void saveUserInfo(User user, int loginType) {
-        editor.putInt(LOGIN_TYPE, loginType);
+    public void saveUserInfo(User user) {
         editor.putString(USER_SCHEMA, new Gson().toJson(user));
         editor.putBoolean(HAS_ACTIVE_USER, true);
         editor.apply();
@@ -49,9 +43,7 @@ public class DataManager {
 
     public Pair<Boolean, User> getActiveUser() {
         if (preferences.getBoolean(HAS_ACTIVE_USER, false)) {
-            int userType = preferences.getInt(LOGIN_TYPE, -1);
             User user = new Gson().fromJson(preferences.getString(USER_SCHEMA, ""), User.class);
-            user.setUserType(userType);
             return Pair.create(true, user);
         } else return Pair.create(false, null);
     }

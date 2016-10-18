@@ -6,31 +6,27 @@ import java.util.ArrayList;
  * Created by JunseokOh on 2016. 9. 24..
  */
 public class User {
-    private int userType;
     private String email, name, phone, auth_token, reservation, _id;
     private ArrayList<String> reservation_waiting;
 
-    public User(int userType, String email, String name, String phone, String auth_token) {
+    public User( String email, String name, String phone, String auth_token) {
         this.email = email;
-        this.userType = userType;
         this.name = name;
         this.phone = phone;
         this.auth_token = auth_token;
     }
 
-    public User(int userType, String email, String name, String phone, String auth_token, String reservation) {
+    public User(String email, String name, String phone, String auth_token, String reservation) {
         this.email = email;
-        this.userType = userType;
         this.name = name;
         this.phone = phone;
         this.auth_token = auth_token;
         this.reservation = reservation;
     }
 
-    public User(int userType, String email, String name, String phone, String auth_token, String reservation, ArrayList<String> reservation_waiting) {
+    public User(String email, String name, String phone, String auth_token, String reservation, ArrayList<String> reservation_waiting) {
         this.email = email;
         this.name = name;
-        this.userType = userType;
         this.phone = phone;
         this.auth_token = auth_token;
         this.reservation = reservation;
@@ -57,9 +53,6 @@ public class User {
         return reservation;
     }
 
-    public int getUserType() {
-        return userType;
-    }
 
     public ArrayList<String> getReservation_waiting() {
         return reservation_waiting;
@@ -69,9 +62,6 @@ public class User {
         return _id;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
-    }
 
     public void setEmail(String email) {
         this.email = email;

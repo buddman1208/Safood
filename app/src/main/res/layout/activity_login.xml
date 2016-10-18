@@ -88,7 +88,7 @@
             android:weightSum="2">
 
             <kr.edcan.safood.views.CartaTagView
-                android:id="@+id/login"
+                android:id="@+id/cancel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -99,7 +99,7 @@
                 app:themeColor="@color/colorPrimary" />
 
             <kr.edcan.safood.views.CartaTagView
-                android:id="@+id/register"
+                android:id="@+id/login"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="7dp"
