@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import kr.edcan.safood.R;
 
-public class GroupSetActivity extends AppCompatActivity {
+public class GroupGenerateActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group_set);
+        setContentView(R.layout.activity_group_generate);
     }
 }
