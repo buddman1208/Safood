@@ -29,12 +29,14 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/bottomBarParent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="#FFF"
             android:orientation="horizontal"
             android:padding="12dp"
+            android:visibility="invisible"
             android:weightSum="2">
 
             <kr.edcan.safood.views.CartaTagView
