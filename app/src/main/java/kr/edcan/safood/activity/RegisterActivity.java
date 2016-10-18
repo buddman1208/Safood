@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             case 200:
                                 Toast.makeText(RegisterActivity.this, "입력하신 정보로 가입되었습니다.\n로그인해주세요!.", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                AuthActivity.finishThis();
                                 finish();
                                 break;
                             case 409:

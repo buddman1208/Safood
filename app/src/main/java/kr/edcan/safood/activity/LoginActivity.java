@@ -59,6 +59,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         case 200:
                             manager.saveUserInfo(response.body());
                             Toast.makeText(LoginActivity.this, response.body().getUsername() + " 님 환영합니다!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            AuthActivity.finishThis();
+                            finish();
                             break;
                         case 400:
                             Toast.makeText(LoginActivity.this, "아이디 혹은 비밀번호가 일치하지 않습니다!", Toast.LENGTH_SHORT).show();
