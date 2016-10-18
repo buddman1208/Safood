@@ -17,15 +17,15 @@ import retrofit2.http.Query;
 public interface NetworkInterface {
     // Authenticate
 
-    @POST("/auth/local/login")
+    @POST("/auth/login")
     @FormUrlEncoded
     Call<User> nativeLogin(@Field("email") String email, @Field("password") String password);
 
-    @POST("/auth/local/authenticate")
+    @POST("/auth/login/auto")
     @FormUrlEncoded
     Call<User> authenticateUser(@Field("token") String token);
 
-    @POST("/auth/local/register")
+    @POST("/auth/register")
     @FormUrlEncoded
     Call<User> registerUser(@Field("name") String name,
                             @Field("password") String password, @Field("email") String email);
