@@ -4,8 +4,6 @@ import android.widget.EditText;
 
 import java.util.ArrayList;
 
-import kr.edcan.rerant.model.Menu;
-
 /**
  * Created by Junseok on 2016-10-04.
  */
