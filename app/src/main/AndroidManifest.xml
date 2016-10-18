@@ -46,7 +46,8 @@
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.GroupSetActivity" />
-        <activity android:name=".activity.GroupGenerateActivity"></activity>
+        <activity android:name=".activity.GroupGenerateActivity" />
+        <activity android:name=".activity.GroupSearchActivity"></activity>
     </application>
 
 </manifest>
