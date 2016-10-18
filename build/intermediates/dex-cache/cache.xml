@@ -160,7 +160,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.0"
-        sha1="9e803570d2a47c2f8a35eee5302b8b6d9ce0925a">
+        sha1="f078778ea408ee15d7d3d0258b1a071ccfda59e2">
         <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_8006438b22054a57ccc8540a84500f02067b92a0\classes.dex" />
     </item>
     <item

@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.widget.TextView;
 
 import kr.edcan.safood.R;
+import kr.edcan.safood.activity.RegisterActivity;
 
 
 /**
@@ -114,5 +115,4 @@ public class CartaTagView extends TextView {
         this.textColor = color;
         requestLayout();
     }
-
 }
