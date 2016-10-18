@@ -18,9 +18,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e6b2d4d7-1e2e-42c3-a216-4a3eef02af5e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/RegisterActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/RegisterActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkHelper.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkInterface.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkInterface.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java" />
     </list>
     <ignored path="Safood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,22 +64,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RegisterActivity.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/RegisterActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataManager.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataManager.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="583">
+              <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2408#2409#0" expanded="true" />
+                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#2498#2499#0" expanded="true" />
+                <element signature="e#2547#2548#0" expanded="true" />
+                <element signature="e#2592#2593#0" expanded="true" />
+                <element signature="e#2649#2650#0" expanded="true" />
+                <element signature="e#2681#2682#0" expanded="true" />
+                <element signature="e#2744#2745#0" expanded="true" />
+                <element signature="e#2889#2890#0" expanded="true" />
+                <element signature="e#2939#2940#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1899,7 +1899,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/Safood.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/models/FacebookUser.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkManager.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/anim-v21/appbar_always_elevated.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/appbar_background.xml" />
@@ -1936,6 +1935,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/RegisterActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java" />
       </list>
     </option>
   </component>
@@ -2666,7 +2666,14 @@
       <option name="project" value="LOCAL" />
       <updated>1476781012305</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[RegisterActivity] Check Register Progress">
+      <created>1476781089077</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1476781089077</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2771,7 +2778,8 @@
     <MESSAGE value="[Dimen] Add Attributes" />
     <MESSAGE value="[Register] Register / Login Form" />
     <MESSAGE value="[NetworkInterface] Check Network&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="[NetworkInterface] Check Network&#10;" />
+    <MESSAGE value="[RegisterActivity] Check Register Progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="[RegisterActivity] Check Register Progress" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -3111,14 +3119,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3184,9 +3184,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/RegisterActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="36" selection-start-line="32" selection-start-column="36" selection-end-line="32" selection-end-column="36" />
+        <state relative-caret-position="367">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/DataManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="36" column="58" selection-start-line="36" selection-start-column="58" selection-end-line="36" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2408#2409#0" expanded="true" />
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+            <element signature="e#2547#2548#0" expanded="true" />
+            <element signature="e#2592#2593#0" expanded="true" />
+            <element signature="e#2649#2650#0" expanded="true" />
+            <element signature="e#2681#2682#0" expanded="true" />
+            <element signature="e#2744#2745#0" expanded="true" />
+            <element signature="e#2889#2890#0" expanded="true" />
+            <element signature="e#2939#2940#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
