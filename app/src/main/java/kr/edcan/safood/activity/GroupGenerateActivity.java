@@ -40,6 +40,7 @@ public class GroupGenerateActivity extends AppCompatActivity {
                                 case 200:
                                     Toast.makeText(GroupGenerateActivity.this, "그룹 생성에 성공했습니다!", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                    GroupSetActivity.finishThis();
                                     finish();
                                     break;
                                 case 409:
