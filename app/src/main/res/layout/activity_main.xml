@@ -47,7 +47,7 @@
                             android:layout_toRightOf="@id/mainNavButton"
                             android:text="@string/app_name"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="18sp" />
+                            android:textSize="20sp" />
 
                         <ImageView
                             android:id="@+id/mainAppbarLaunchCamera"
@@ -71,7 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerInParent="true"
-                            app:tabMode="scrollable"
+                            app:tabMode="fixed"
                             app:tabSelectedTextColor="@color/colorPrimary"
                             app:tabTextAppearance="@style/AppTheme.TabStyle"
                             app:tabTextColor="@color/commonTextColor" />
