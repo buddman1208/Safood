@@ -32,7 +32,7 @@ import java.util.EnumSet;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
-import kr.edcan.safood.activity.MainActivity;
+import kr.edcan.safood.activity.CameraActivity;
 
 /**
  * This thread does all the heavy lifting of decoding the images.
@@ -44,12 +44,12 @@ final class DecodeThread extends Thread {
   public static final String BARCODE_BITMAP = "barcode_bitmap";
   public static final String BARCODE_SCALED_FACTOR = "barcode_scaled_factor";
 
-  private final MainActivity activity;
+  private final CameraActivity activity;
   private final Map<DecodeHintType,Object> hints;
   private Handler handler;
   private final CountDownLatch handlerInitLatch;
 
-  DecodeThread(MainActivity activity,
+  DecodeThread(CameraActivity activity,
                Collection<BarcodeFormat> decodeFormats,
                Map<DecodeHintType,?> baseHints,
                String characterSet,

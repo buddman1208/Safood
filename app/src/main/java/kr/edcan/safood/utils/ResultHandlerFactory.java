@@ -20,7 +20,7 @@ import com.google.zxing.Result;
 import com.google.zxing.client.result.ParsedResult;
 import com.google.zxing.client.result.ResultParser;
 
-import kr.edcan.safood.activity.MainActivity;
+import kr.edcan.safood.activity.CameraActivity;
 
 /**
  * Manufactures Android-specific handlers based on the barcode content's type.
@@ -31,7 +31,7 @@ public final class ResultHandlerFactory {
   private ResultHandlerFactory() {
   }
 
-  public static ResultHandler makeResultHandler(MainActivity activity, Result rawResult) {
+  public static ResultHandler makeResultHandler(CameraActivity activity, Result rawResult) {
     ParsedResult result = parseResult(rawResult);
         return new TextResultHandler(activity, result, rawResult);
   }

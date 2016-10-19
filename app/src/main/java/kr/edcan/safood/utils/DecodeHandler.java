@@ -35,17 +35,17 @@ import java.io.ByteArrayOutputStream;
 import java.util.Map;
 
 import kr.edcan.safood.R;
-import kr.edcan.safood.activity.MainActivity;
+import kr.edcan.safood.activity.CameraActivity;
 
 final class DecodeHandler extends Handler {
 
     private static final String TAG = DecodeHandler.class.getSimpleName();
 
-    private final MainActivity activity;
+    private final CameraActivity activity;
     private final MultiFormatReader multiFormatReader;
     private boolean running = true;
 
-    DecodeHandler(MainActivity activity, Map<DecodeHintType, Object> hints) {
+    DecodeHandler(CameraActivity activity, Map<DecodeHintType, Object> hints) {
         multiFormatReader = new MultiFormatReader();
         multiFormatReader.setHints(hints);
         this.activity = activity;

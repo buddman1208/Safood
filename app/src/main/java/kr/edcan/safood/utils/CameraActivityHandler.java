@@ -38,7 +38,7 @@ import java.util.Collection;
 import java.util.Map;
 
 import kr.edcan.safood.R;
-import kr.edcan.safood.activity.MainActivity;
+import kr.edcan.safood.activity.CameraActivity;
 import kr.edcan.safood.camera.CameraManager;
 import kr.edcan.safood.views.ViewfinderResultPointCallback;
 
@@ -47,11 +47,11 @@ import kr.edcan.safood.views.ViewfinderResultPointCallback;
  *
  * @author dswitkin@google.com (Daniel Switkin)
  */
-public final class MainActivityHandler extends Handler {
+public final class CameraActivityHandler extends Handler {
 
-    private static final String TAG = MainActivityHandler.class.getSimpleName();
+    private static final String TAG = CameraActivityHandler.class.getSimpleName();
 
-    private final MainActivity activity;
+    private final CameraActivity activity;
     private final DecodeThread decodeThread;
     private State state;
     private final CameraManager cameraManager;
@@ -62,7 +62,7 @@ public final class MainActivityHandler extends Handler {
         DONE
     }
 
-    public MainActivityHandler(MainActivity activity,
+    public CameraActivityHandler(CameraActivity activity,
                                Collection<BarcodeFormat> decodeFormats,
                                Map<DecodeHintType, ?> baseHints,
                                String characterSet,
