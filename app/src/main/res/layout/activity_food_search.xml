@@ -1,10 +1,11 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:context="kr.edcan.safood.activity.FoodSearchActivity">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -13,9 +14,7 @@
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:title="그룹 가입하기"
-                app:titleTextColor="@color/colorPrimary" />
+                android:layout_height="wrap_content" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -52,26 +51,9 @@
             </RelativeLayout>
         </android.support.design.widget.AppBarLayout>
 
-        <RelativeLayout
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="16dp"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/result"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:text="그룹 이름을 입력한 후 검색해주세요!"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+            android:layout_height="match_parent" />
     </LinearLayout>
 </layout>
