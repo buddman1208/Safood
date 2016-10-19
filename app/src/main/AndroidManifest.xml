@@ -28,14 +28,14 @@
         android:theme="@style/CaptureTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name=".activity.AuthActivity">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AuthActivity"></activity>
         <activity android:name=".activity.RecentActivity" />
         <activity android:name=".activity.TutorialActivity" />
         <activity android:name=".activity.DetailViewActivity" />
@@ -50,7 +50,8 @@
         <activity android:name=".activity.GroupSearchActivity" />
         <activity android:name=".activity.AllergicExceptionSetActivity" />
         <activity android:name=".activity.AllergicExceptionSelectActivity" />
-        <activity android:name=".activity.CameraActivity"></activity>
+        <activity android:name=".activity.CameraActivity" />
+        <activity android:name=".activity.NewGroupMemoActivity"></activity>
     </application>
 
 </manifest>
