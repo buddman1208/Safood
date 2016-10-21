@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void onFailure(Call<User> call, Throwable t) {
                     Toast.makeText(LoginActivity.this, "서버와의 연동에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
-                    Log.e("asdf", t.getMessage());
+                    Log.e("asdf1", t.getMessage());
 
                 }
             });

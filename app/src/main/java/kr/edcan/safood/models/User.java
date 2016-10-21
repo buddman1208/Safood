@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class User {
     private String userid, username, profileImage, apikey, groupid;
-    private ArrayList<String> history;
+    private ArrayList<History> history;
     private Exception exception;
 
-    public User(String userid, String username, String profileImage, String apikey, String groupid, ArrayList<String> history, Exception exception) {
+    public User(String userid, String username, String profileImage, String apikey, String groupid, ArrayList<History> history, Exception exception) {
         this.userid = userid;
         this.username = username;
         this.profileImage = profileImage;
@@ -40,7 +40,7 @@ public class User {
         return groupid;
     }
 
-    public ArrayList<String> getHistory() {
+    public ArrayList<History> getHistory() {
         return history;
     }
 
