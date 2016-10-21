@@ -18,6 +18,7 @@ import java.io.File;
 import kr.edcan.safood.R;
 import kr.edcan.safood.databinding.ActivityGroupGenerateBinding;
 import kr.edcan.safood.models.Group;
+import kr.edcan.safood.models.User;
 import kr.edcan.safood.utils.DataManager;
 import kr.edcan.safood.utils.NetworkHelper;
 import kr.edcan.safood.utils.StringUtils;
@@ -58,17 +59,16 @@ public class GroupGenerateActivity extends AppCompatActivity {
                         RequestBody groupname = RequestBody.create(MediaType.parse("text/plain"), binding.groupNameInput.getText().toString().trim());
                         RequestBody apikey = RequestBody.create(MediaType.parse("text/plain"), manager.getActiveUser().second.getApikey());
                         RequestBody imageBody = RequestBody.create(MediaType.parse("image/png"), new File(picturePath));
+                        RequestBody limit = RequestBody.create(MediaType.parse("text/plain"), "100");
                         Call<Group> generateGroup = NetworkHelper.getNetworkInstance()
-                                .createGroup(imageBody, groupname, apikey);
+                                .createGroup(imageBody, groupname, apikey, limit);
                         generateGroup.enqueue(new Callback<Group>() {
                             @Override
                             public void onResponse(Call<Group> call, Response<Group> response) {
                                 switch (response.code()) {
                                     case 200:
                                         Toast.makeText(GroupGenerateActivity.this, "그룹 생성에 성공했습니다!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        GroupSetActivity.finishThis();
-                                        finish();
+                                        saveUser();
                                         break;
                                     case 409:
                                         Toast.makeText(GroupGenerateActivity.this, "이미 해당 이름을 가진 그룹이 있습니다", Toast.LENGTH_SHORT).show();
@@ -83,7 +83,32 @@ public class GroupGenerateActivity extends AppCompatActivity {
                         });
                     } else
                         Toast.makeText(GroupGenerateActivity.this, "이미지를 선택해주세요!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(GroupGenerateActivity.this, "그룹 이름을 입력해주세요!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void saveUser() {
+        Call<User> getUserInfo = NetworkHelper.getNetworkInstance().getSelfInfo(manager.getActiveUser().second.getApikey());
+        getUserInfo.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                switch (response.code()){
+                    case 200:
+                        manager.saveUserInfo(response.body());
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        GroupSetActivity.finishThis();
+                        finish();
+                        break;
+                    default:
+
                 }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("asdf", t.getMessage());
             }
         });
     }

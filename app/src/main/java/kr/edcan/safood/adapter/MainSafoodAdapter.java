@@ -69,7 +69,7 @@ public class MainSafoodAdapter extends SlidingExpandableListView.AnimatedExpanda
 
         // Set Data
         binding.mainListGroupTitle.setText(data.getTitle());
-        binding.mainListGroupContent.setText(data.getLastModifiedDate().toLocaleString());
+        binding.mainListGroupContent.setText(data.getContentSize()+"개의 식품");
         binding.mainListGroupBottomIndicator.setVisibility(b ? View.VISIBLE : View.INVISIBLE);
         return binding.getRoot();
     }
@@ -79,7 +79,6 @@ public class MainSafoodAdapter extends SlidingExpandableListView.AnimatedExpanda
         MainSafoodListviewGroupChildBinding binding = DataBindingUtil.inflate(inflater, R.layout.main_safood_listview_group_child, null, true);
         SafoodContentData data = contentArr.get(groupPosition).get(childPosition);
         binding.mainListChildTitle.setText(data.getTitle());
-        binding.mainListChildContent.setText(data.getAddedDate().toLocaleString() + "에 추가됨");
         if (isLastChild) {
             binding.mainListChildBottomIndicator.setVisibility(View.INVISIBLE);
         }

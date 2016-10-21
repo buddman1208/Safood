@@ -22,7 +22,12 @@ import kr.edcan.safood.databinding.ActivityGroupSearchBinding;
 import kr.edcan.safood.databinding.ActivityGroupSetBinding;
 import kr.edcan.safood.databinding.CommonListviewContentBinding;
 import kr.edcan.safood.models.Group;
+import kr.edcan.safood.utils.NetworkHelper;
+import kr.edcan.safood.utils.NetworkInterface;
 import kr.edcan.safood.utils.StringUtils;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GroupSearchActivity extends AppCompatActivity implements LastAdapter.LayoutHandler, LastAdapter.OnClickListener, LastAdapter.OnBindListener {
 
@@ -41,7 +46,21 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
             @Override
             public void onClick(View v) {
                 if(StringUtils.fullFilled(binding.groupNameInput)){
-//                    Call<S>
+                    Call<ArrayList<Group>> searchGroup = NetworkHelper.getNetworkInstance().searchGroup(binding.groupNameInput.getText().toString().trim());
+                    searchGroup.enqueue(new Callback<ArrayList<Group>>() {
+                        @Override
+                        public void onResponse(Call<ArrayList<Group>> call, Response<ArrayList<Group>> response) {
+                            switch (response.code()) {
+//                                result = response.body();
+
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<ArrayList<Group>> call, Throwable t) {
+
+                        }
+                    });
                     LastAdapter.with(result,0)
                             .layoutHandler(GroupSearchActivity.this)
                             .onBindListener(GroupSearchActivity.this)

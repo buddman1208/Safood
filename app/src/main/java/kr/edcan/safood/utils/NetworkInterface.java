@@ -7,8 +7,12 @@
 package kr.edcan.safood.utils;
 
 import java.util.ArrayList;
+import java.util.Date;
 
+import kr.edcan.safood.models.Food;
 import kr.edcan.safood.models.Group;
+import kr.edcan.safood.models.GroupMemo;
+import kr.edcan.safood.models.SafoodGroup;
 import kr.edcan.safood.models.User;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -121,7 +125,8 @@ public interface NetworkInterface {
     Call<Group> createGroup(
             @Part("file\"; filename=\"image.jpg\"") RequestBody image,
             @Part("groupname") RequestBody groupname,
-            @Part("admin") RequestBody groupAdminid);
+            @Part("apikey") RequestBody groupAdminid,
+            @Part("limit") RequestBody limit);
 
     @POST("/group/admin/destroyGroup")
     @FormUrlEncoded
@@ -151,6 +156,62 @@ public interface NetworkInterface {
             @Field("userid") String userid,
             @Field("groupid") String groupid,
             @Field("targetid") String targetid);
+
+    @POST("/search/barcode")
+    @FormUrlEncoded
+    Call<Food> searchByBarcode(
+            @Field("apikey") String apikey,
+            @Field("barcode") String barcode,
+            @Field("date") Date date
+    );
+    @POST("/safood/newSafoodGroup")
+    @FormUrlEncoded
+    Call<ArrayList<SafoodGroup>> newSafoodGroup(
+            @Field("groupname") String groupname,
+            @Field("apikey") String apikey,
+            @Field("color") int color
+    );
+    @POST("/safood/addToSafoodGroup")
+    @FormUrlEncoded
+    Call<ArrayList<SafoodGroup>> addToSafoodGroup(
+            @Field("groupid") String groupid,
+            @Field("apikey") String apikey,
+            @Field("foodid") String foodid
+    );
+    @POST("/safood/removeFromSafoodGroup")
+    @FormUrlEncoded
+    Call<ArrayList<SafoodGroup>> removeFromSafoodGroup(
+            @Field("groupid") String groupid,
+            @Field("apikey") String apikey,
+            @Field("foodid") String foodid
+    );
+    @POST("/safood/getSafoodGroupList")
+    @FormUrlEncoded
+    Call<ArrayList<SafoodGroup>> getSafoodGroupList(
+            @Field("apikey") String apikey
+    );
+
+    @POST("/search")
+    @FormUrlEncoded
+    Call<ArrayList<Food>> searchFoodbyKeyword(
+            @Field("foodname") String foodname
+    );
+    @POST("/group/memoAdd")
+    @FormUrlEncoded
+    Call<ArrayList<GroupMemo>> addMemo(
+            @Field("title") String title,
+            @Field("content") String content,
+            @Field("color") int color,
+            @Field("foods") String foods,
+            @Field("groupid") String groupid
+    );
+
+    @POST("/group/memo")
+    @FormUrlEncoded
+    Call<ArrayList<GroupMemo>> getGroupMemo(
+            @Field("groupid") String groupid
+    );
+
 
 
 }

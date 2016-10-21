@@ -1,10 +1,276 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="#FFF"
-    android:layout_height="match_parent">
+<layout>
 
-    <kr.edcan.safood.views.CartaTagView
-        android:layout_centerInParent="true"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="종교"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="종교에서 금하거나 자제하는 음식이면 체크해 주세요."
+                android:textColor="@color/textColorDark"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <kr.edcan.safood.views.CartaTagView
+                    android:id="@+id/c1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="힌두교"
+                    app:themeColor="@color/colorPrimary" />
+
+                <kr.edcan.safood.views.CartaTagView
+                    android:id="@+id/c2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+
+                    android:text="불교"
+                    app:themeColor="@color/colorPrimary" />
+
+                <kr.edcan.safood.views.CartaTagView
+                    android:id="@+id/c3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="그리스드교"
+                    app:themeColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <kr.edcan.safood.views.CartaTagView
+                    android:id="@+id/c4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="이슬람교"
+                    app:themeColor="@color/colorPrimary" />
+
+                <kr.edcan.safood.views.CartaTagView
+                    android:id="@+id/c5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp"
+                    android:text="기타"
+                    app:themeColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="알레르기"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="알레르기를 발생하는 음식일 경우 해당되는 것에 체크해 주세요."
+                    android:textColor="@color/textColorDark"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="계란"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c7"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="대두 (콩)"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c8"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="우유"
+                        app:themeColor="@color/colorPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c9"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="밀"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c10"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="땅콩"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c11"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="해산물"
+                        app:themeColor="@color/colorPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c12"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="과일"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="채소"
+                        app:themeColor="@color/colorPrimary" />
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c14"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="갑각류"
+                        app:themeColor="@color/colorPrimary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <kr.edcan.safood.views.CartaTagView
+                        android:id="@+id/c15"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingBottom="10dp"
+                        android:paddingTop="10dp"
+                        android:text="간장"
+
+                        app:themeColor="@color/colorPrimary" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

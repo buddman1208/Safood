@@ -28,7 +28,7 @@
         android:theme="@style/CaptureTheme">
         <activity
             android:name=".activity.MainActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.AuthActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +53,8 @@
         <activity android:name=".activity.CameraActivity" />
         <activity android:name=".activity.NewGroupMemoActivity" />
         <activity android:name=".activity.FoodSearchActivity" />
-        <activity android:name=".activity.NewFoodRegisterActivity"></activity>
+        <activity android:name=".activity.NewFoodRegisterActivity" />
+        <activity android:name=".activity.GroupMemoActivity"></activity>
     </application>
 
 </manifest>

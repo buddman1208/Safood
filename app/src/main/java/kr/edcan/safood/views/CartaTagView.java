@@ -115,4 +115,7 @@ public class CartaTagView extends TextView {
         this.textColor = color;
         requestLayout();
     }
+    public boolean getFullMode(){
+        return this.fullMode;
+    }
 }

@@ -7,18 +7,13 @@ import java.util.Date;
  */
 public class SafoodContentData {
     private String title;
-    private Date addedDate;
 
-    public SafoodContentData(String title, Date addedDate) {
+    public SafoodContentData(String title) {
         this.title = title;
-        this.addedDate = addedDate;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public Date getAddedDate() {
-        return addedDate;
-    }
 }

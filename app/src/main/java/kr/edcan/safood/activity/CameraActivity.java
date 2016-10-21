@@ -1,7 +1,9 @@
 package kr.edcan.safood.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Camera;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
@@ -12,34 +14,51 @@ import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
+import com.google.gson.Gson;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.Result;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Map;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.camera.CameraManager;
+import kr.edcan.safood.models.Food;
 import kr.edcan.safood.utils.AmbientLightManager;
 import kr.edcan.safood.utils.CameraActivityHandler;
+import kr.edcan.safood.utils.DataManager;
+import kr.edcan.safood.utils.ImageSingleton;
 import kr.edcan.safood.utils.InactivityTimer;
 import kr.edcan.safood.utils.IntentSource;
+import kr.edcan.safood.utils.NetworkHelper;
 import kr.edcan.safood.utils.ResultHandler;
 import kr.edcan.safood.utils.ResultHandlerFactory;
 import kr.edcan.safood.views.ViewfinderView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.Callback  {
+public class CameraActivity extends AppCompatActivity implements SurfaceHolder.Callback {
 
     private final String TAG = "Safood";
     public static CameraManager cameraManager;
+
     public static void performClick() {
         cameraManager.autoFocus();
     }
+
     public CameraActivityHandler handler;
     public Result savedResultToShow;
     public static ViewfinderView viewfinderView;
@@ -51,12 +70,15 @@ public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.
     public String characterSet;
     public InactivityTimer inactivityTimer;
     public AmbientLightManager ambientLightManager;
+
     public ViewfinderView getViewfinderView() {
         return viewfinderView;
     }
+
     public Handler getHandler() {
         return handler;
     }
+
     public CameraManager getCameraManager() {
         return cameraManager;
     }
@@ -112,7 +134,14 @@ public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.
                 cameraManager.autoFocus();
             }
         });
+        findViewById(R.id.mainAppbarSearch).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), FoodSearchActivity.class));
+            }
+        });
     }
+
     @Override
     protected void onPause() {
         if (handler != null) {
@@ -206,10 +235,10 @@ public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.
      */
     public void handleDecode(Result rawResult, Bitmap barcode, float scaleFactor) {
         Log.e("asdf", "Catch");
-            inactivityTimer.onActivity();
-            lastResult = rawResult;
-            ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
-            handleDecodeInternally(rawResult, resultHandler, barcode);
+        inactivityTimer.onActivity();
+        lastResult = rawResult;
+        ResultHandler resultHandler = ResultHandlerFactory.makeResultHandler(this, rawResult);
+        handleDecodeInternally(rawResult, resultHandler, barcode);
     }
 
     // Put up our own UI for how to handle the decoded contents.
@@ -250,22 +279,59 @@ public class CameraActivity extends AppCompatActivity  implements SurfaceHolder.
                 .show();
     }
 
-    private void showResultDialog(String resultData) {
-        MaterialDialog builder = new MaterialDialog.Builder(this)
-                .title(getString(R.string.app_name))
-                .content(resultData)
-                .positiveText("확인")
-                .onPositive(new MaterialDialog.SingleButtonCallback() {
-                    @Override
-                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                        restartPreviewAfterDelay(0);
-                    }
-                })
-                .show();
-        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+    private void showResultDialog(final String resultData) {
+//        MaterialDialog builder = new MaterialDialog.Builder(this)
+//                .title(getString(R.string.app_name))
+//                .content(resultData)
+//                .positiveText("확인")
+//                .onPositive(new MaterialDialog.SingleButtonCallback() {
+//                    @Override
+//                    public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+//                        restartPreviewAfterDelay(0);
+//                    }
+//                })
+//                .show();
+//        builder.setOnDismissListener(new DialogInterface.OnDismissListener() {
+//            @Override
+//            public void onDismiss(DialogInterface dialog) {
+//                restartPreviewAfterDelay(0);
+//            }
+//        });
+        Log.e("asdf", resultData);
+        Call<Food> barcodeSearch = NetworkHelper.getNetworkInstance().searchByBarcode(
+                new DataManager(this).getActiveUser().second.getApikey(), resultData, new Date(System.currentTimeMillis()));
+        barcodeSearch.enqueue(new Callback<Food>() {
             @Override
-            public void onDismiss(DialogInterface dialog) {
-                restartPreviewAfterDelay(0);
+            public void onResponse(Call<Food> call, final Response<Food> response) {
+                switch (response.code()) {
+                    case 200:
+                        Toast.makeText(CameraActivity.this, response.body().getName() + " ", Toast.LENGTH_SHORT).show();
+                        View view = getLayoutInflater().inflate(R.layout.popup_dialog, null, false);
+                        NetworkImageView imageview = (NetworkImageView) view.findViewById(R.id.image);
+                        TextView title = (TextView) view.findViewById(R.id.title);
+                        TextView viewDetail = (TextView) view.findViewById(R.id.see);
+                        imageview.setImageUrl(response.body().getThumbnail(), ImageSingleton.getInstance(CameraActivity.this).getImageLoader());
+                        title.setText(response.body().getName());
+                        viewDetail.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                startActivity(new Intent(getApplicationContext(), DetailViewActivity.class)
+                                        .putExtra("json", new Gson().toJson(response.body())));
+                                finish();
+                            }
+                        });
+                        new MaterialDialog.Builder(CameraActivity.this)
+                                .customView(view, false)
+                                .show();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Food> call, Throwable t) {
+                Log.e("asdf", t.getMessage());
             }
         });
     }

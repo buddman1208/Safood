@@ -1,11 +1,51 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <kr.edcan.safood.views.SlidingExpandableListView
-        android:id="@+id/mainExpandableListView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:background="#FFF"
-        android:layout_height="match_parent"
-        android:divider="@null"
-        android:groupIndicator="@null"
-        android:fitsSystemWindows="true" />
+        android:layout_height="match_parent">
+
+        <kr.edcan.safood.views.SlidingExpandableListView
+            android:id="@+id/mainExpandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:background="#FFF"
+            android:divider="@null"
+            android:fitsSystemWindows="true"
+            android:groupIndicator="@null" />
+        <LinearLayout
+            android:id="@+id/bottomBarParent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:weightSum="2">
+
+            <kr.edcan.safood.views.CartaTagView
+                android:id="@+id/editSafoodGroup"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="리스트 수정"
+                android:textStyle="bold"
+                app:themeColor="#FFF" />
+
+            <kr.edcan.safood.views.CartaTagView
+                android:id="@+id/newSafoodGroup"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_weight="1"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:text="새로운 폴더 추가"
+                android:textStyle="bold"
+                app:themeColor="#FFF" />
+        </LinearLayout>
+    </RelativeLayout>
 </layout>

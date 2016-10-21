@@ -8,11 +8,10 @@ import java.util.Date;
 public class SafoodTitleData {
     private String title;
     private int contentSize;
-    private Date lastModifiedDate;
 
-    public SafoodTitleData(String title, Date lastModifiedDate) {
+    public SafoodTitleData(String title, int contentSize) {
         this.title = title;
-        this.lastModifiedDate = lastModifiedDate;
+        this.contentSize = contentSize;
     }
 
     public String getTitle() {
@@ -23,7 +22,4 @@ public class SafoodTitleData {
         return contentSize;
     }
 
-    public Date getLastModifiedDate() {
-        return lastModifiedDate;
-    }
 }
