@@ -17,6 +17,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
@@ -116,10 +117,11 @@ public interface NetworkInterface {
             @Field("groupname") String groupname);
 
     @POST("/group/admin/createGroup")
-    @FormUrlEncoded
+    @Multipart
     Call<Group> createGroup(
-            @Field("groupname") String groupname,
-            @Field("admin") String groupAdminid);
+            @Part("file\"; filename=\"image.jpg\"") RequestBody image,
+            @Part("groupname") RequestBody groupname,
+            @Part("admin") RequestBody groupAdminid);
 
     @POST("/group/admin/destroyGroup")
     @FormUrlEncoded
