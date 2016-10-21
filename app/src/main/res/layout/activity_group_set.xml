@@ -57,8 +57,7 @@
                 android:singleLine="true"
                 android:text="그룹에 가입하기"
                 android:textColor="@color/colorPrimary"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/makeGroup"
@@ -70,8 +69,7 @@
                 android:singleLine="true"
                 android:text="그룹을 생성하기"
                 android:textColor="@color/colorPrimary"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:textSize="17sp"/>
 
         </LinearLayout>
 

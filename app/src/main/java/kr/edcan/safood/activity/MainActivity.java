@@ -75,8 +75,8 @@ public class MainActivity extends AppCompatActivity {
     private void setDefault() {
         manager = new DataManager(getApplicationContext());
         if (manager.getActiveUser().second.getGroupid().equals("")) {
-//            startActivity(new Intent(getApplicationContext(), GroupSetActivity.class));
-//            finish();
+            startActivity(new Intent(getApplicationContext(), GroupSetActivity.class));
+            finish();
         }
         helper = new SafoodHelper(getApplicationContext());
         pager = (ViewPager) findViewById(R.id.mainPager);
