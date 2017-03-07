@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
     ActivityGroupSearchBinding binding;
     ArrayList<Group> result = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,15 +47,13 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
         binding.groupSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(StringUtils.fullFilled(binding.groupNameInput)){
+                if (StringUtils.fullFilled(binding.groupNameInput)) {
                     Call<ArrayList<Group>> searchGroup = NetworkHelper.getNetworkInstance().searchGroup(binding.groupNameInput.getText().toString().trim());
                     searchGroup.enqueue(new Callback<ArrayList<Group>>() {
                         @Override
                         public void onResponse(Call<ArrayList<Group>> call, Response<ArrayList<Group>> response) {
-                            switch (response.code()) {
+                            Log.e("asdf", "asdf");
 //                                result = response.body();
-
-                            }
                         }
 
                         @Override
@@ -61,12 +61,13 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
                         }
                     });
-                    LastAdapter.with(result,0)
+                    LastAdapter.with(result, 0)
                             .layoutHandler(GroupSearchActivity.this)
                             .onBindListener(GroupSearchActivity.this)
                             .onClickListener(GroupSearchActivity.this)
                             .into(binding.recyclerView);
-                } else Toast.makeText(GroupSearchActivity.this, "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(GroupSearchActivity.this, "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -80,7 +81,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
@@ -98,7 +99,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
         Group group = (Group) o;
         new MaterialDialog.Builder(this)
                 .title("확인해주세요!")
-                .content(group.getGroupname()+" 그룹에 가입합니다.")
+                .content(group.getGroupname() + " 그룹에 가입합니다.")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
@@ -116,7 +117,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
     @Override
     public void onBind(@NotNull Object o, @NotNull View view, int i, int i1) {
-        switch (i){
+        switch (i) {
             case R.layout.common_listview_content:
                 Group group = (Group) o;
                 CommonListviewContentBinding binding = DataBindingUtil.getBinding(view);

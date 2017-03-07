@@ -61,9 +61,6 @@ final class CameraConfigurationManager {
         this.context = context;
     }
 
-    /**
-     * Reads, one time, values from the camera that are needed by the app.
-     */
     void initFromCameraParameters(Camera camera) {
         Camera.Parameters parameters = camera.getParameters();
         WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
@@ -71,12 +68,10 @@ final class CameraConfigurationManager {
         Point theScreenResolution = new Point();
         display.getSize(theScreenResolution);
         screenResolution = theScreenResolution;
-        Log.i(TAG, "Screen resolution: " + screenResolution);
 
         Point screenResolutionForCamera = new Point();
         screenResolutionForCamera.x = screenResolution.x;
         screenResolutionForCamera.y = screenResolution.y;
-        // preview size is always something like 480*320, other 320*480
         if (screenResolution.x < screenResolution.y) {
             screenResolutionForCamera.x = screenResolution.y;
             screenResolutionForCamera.y = screenResolution.x;
