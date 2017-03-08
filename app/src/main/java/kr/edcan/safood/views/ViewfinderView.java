@@ -25,6 +25,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.google.zxing.ResultPoint;
@@ -100,7 +101,7 @@ public final class ViewfinderView extends View {
         Paint text = new Paint(Paint.LINEAR_TEXT_FLAG);
         text.setAntiAlias(true);
         text.setTextAlign(Paint.Align.CENTER);
-        text.setTextSize(40);
+        text.setTextSize(getResources().getDimensionPixelSize(R.dimen.cameraCanvasTextSize));
         text.setColor(Color.WHITE);
         paint.setColor(resultBitmap != null ? resultColor : maskColor);
         whitePaint.setColor(Color.WHITE);
