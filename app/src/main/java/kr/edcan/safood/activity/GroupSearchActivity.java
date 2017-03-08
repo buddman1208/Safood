@@ -2,9 +2,10 @@ package kr.edcan.safood.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,12 +21,12 @@ import java.util.ArrayList;
 
 import kr.edcan.safood.R;
 import kr.edcan.safood.databinding.ActivityGroupSearchBinding;
-import kr.edcan.safood.databinding.ActivityGroupSetBinding;
 import kr.edcan.safood.databinding.CommonListviewContentBinding;
 import kr.edcan.safood.models.Group;
+import kr.edcan.safood.utils.DataManager;
 import kr.edcan.safood.utils.NetworkHelper;
-import kr.edcan.safood.utils.NetworkInterface;
 import kr.edcan.safood.utils.StringUtils;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,6 +35,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
     ActivityGroupSearchBinding binding;
     ArrayList<Group> result = new ArrayList<>();
+    DataManager manager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
     }
 
     private void setDefault() {
+        manager = new DataManager(this);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.groupSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +56,22 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
                     searchGroup.enqueue(new Callback<ArrayList<Group>>() {
                         @Override
                         public void onResponse(Call<ArrayList<Group>> call, Response<ArrayList<Group>> response) {
-                            Log.e("asdf", "asdf");
-//                                result = response.body();
+                            switch (response.code()) {
+                                case 200:
+                                    binding.recyclerView.setVisibility(View.VISIBLE);
+                                    binding.result.setVisibility(View.GONE);
+                                    result = response.body();
+                                    LastAdapter.with(result, 0)
+                                            .layoutHandler(GroupSearchActivity.this)
+                                            .onBindListener(GroupSearchActivity.this)
+                                            .onClickListener(GroupSearchActivity.this)
+                                            .into(binding.recyclerView);
+                                    break;
+                                case 401:
+                                    binding.recyclerView.setVisibility(View.GONE);
+                                    binding.result.setVisibility(View.VISIBLE);
+                                    binding.result.setText("검색된 그룹이 없습니다!");
+                            }
                         }
 
                         @Override
@@ -61,11 +79,7 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
                         }
                     });
-                    LastAdapter.with(result, 0)
-                            .layoutHandler(GroupSearchActivity.this)
-                            .onBindListener(GroupSearchActivity.this)
-                            .onClickListener(GroupSearchActivity.this)
-                            .into(binding.recyclerView);
+
                 } else
                     Toast.makeText(GroupSearchActivity.this, "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
             }
@@ -96,21 +110,41 @@ public class GroupSearchActivity extends AppCompatActivity implements LastAdapte
 
     @Override
     public void onClick(@NotNull Object o, @NotNull View view, int i, int i1) {
-        Group group = (Group) o;
+        final Group group = (Group) o;
         new MaterialDialog.Builder(this)
                 .title("확인해주세요!")
                 .content(group.getGroupname() + " 그룹에 가입합니다.")
                 .onPositive(new MaterialDialog.SingleButtonCallback() {
                     @Override
                     public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-//                        Call<S>
-//                        Toast.makeText(GroupSearchActivity.this, "그룹 생성에 성공했습니다!", Toast.LENGTH_SHORT).show();
-//                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-//                        GroupSetActivity.finishThis();
-//                        finish();
+                        NetworkHelper.getNetworkInstance()
+                                .joinGroup(
+                                        manager.getActiveUser().second.getApikey(),
+                                        group.getGroupid())
+                                .enqueue(new Callback<ResponseBody>() {
+                                    @Override
+                                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                        switch (response.code()) {
+                                            case 200:
+                                                Toast.makeText(GroupSearchActivity.this, "그룹 가입에 성공했습니다!", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                                GroupSetActivity.finishThis();
+                                                finish();
+                                                break;
+                                            default:
+                                                Log.e("asdf", response.code() + "");
+                                        }
+                                    }
 
+                                    @Override
+                                    public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                        Log.e("asdf", t.getMessage() + "");
+                                    }
+                                });
                     }
                 })
+                .positiveText("확인")
+                .negativeText("취소")
                 .show();
 
     }
