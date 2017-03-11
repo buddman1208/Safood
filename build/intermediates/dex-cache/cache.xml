@@ -3,354 +3,354 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.vkondrav.swiftadapter\swift-adapter\0.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="24.0.0"
-        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.1.0_3d4d5b16d5f0ebb5285043ecf4e95a6fcb9ecf37\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.databinding\adapters\1.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="c56d29136c2257f63f08c29c4e739efb03b06c7d">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-adapters-1.2.1_c257b4d42d4e394ba3ce20252d1de0456ec14182\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_292a23b09cc19f603dffcf3563e06f27cbd17eab\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.3.0_8d0e32e696ea5a47811f3c0dcea6d37ddda5c161\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_a65d5a0180441d5207ce7aade480bb4ef0fd9cf8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_c84910ed3257ca930d96218593d0ce2a62bf399e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.github.nitrico.lastadapter\lastadapter\1.2.3\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="8ed4579d5af464ba0653f07a2b3c2cadf51bb904">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.nitrico.lastadapter-lastadapter-1.2.3_f6c16ba92eb0dff9a0664672779082bc8b1a1297\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.android.databinding\baseLibrary\2.2.1\30d2b12e06347ece26e565b60cb7de12ed14d13b\baseLibrary-2.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="30d2b12e06347ece26e565b60cb7de12ed14d13b">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.2.1_f0a999a8f9c9e6cef4f7c671500c9431193edffe\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_0d9dbd84840d36c32bd899aa512d2707a6ae6631\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_a8436ea23255f6c6ce4dc4fe47fd4406fb10a334\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_5ad78965405ecbbaed7f75bf0d931b8ca0bbf67c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.9.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="acc33023966f868dfe3ecb77a3ce5676dc8de92d">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.afollestad.material-dialogs-core-0.9.0.1_ae9e4fbaf35b8cb678a8f9383d6b8e4095424fce\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_3108ba5c90a49b4e348717be6acac26c163fd930\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.9.0.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="cee98beed542ecad574ef4cbdc5e2d7244ea9661">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.afollestad.material-dialogs-commons-0.9.0.1_d8829acf9d70544e98db392adecd7b5703f5efa8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_0809a0ed956fa44c8cfb4093a5e4fee2a4118ba0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.8.0_1b0255912f44151f8373f96e47916d6473b70bc9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_bde1aacd4f29173403ba6a55de47671ea4a5c8ee\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_4f9995766e7630ba98ab1a89598d992e04e6319b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="d5bc42ec20ee1b9588badc497af5f4f598bf74ff">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_8006438b22054a57ccc8540a84500f02067b92a0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="D:\WinSDK\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_984b64702b5e3c609fae74b62c2ed9cdc7b88a12\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b31fb847db8b1bc41aac5ad77bb51037631b8261\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\gun0912.ted\tedpermission\1.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="b5b075fd42793be1d5fb8f12fb29fdce3597f6c3">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\gun0912.ted-tedpermission-1.0.0_02651730fc18a5e0533e197cc63b2165322de699\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_4f8d1c9596891e237bbee79aa3cb8e2b9222d511\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="8209236b20f2ced4ec584dbe4d3e02861bf4bf42">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3d43205e861917f962d4f4870f01efd9757911a6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_7c5dc12453bad591876fdd07a330c960252ead45\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-runtime\1.0.4\8e25da5e31669f5acf514bdd99b94ff5c7003b3b\kotlin-runtime-1.0.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="8e25da5e31669f5acf514bdd99b94ff5c7003b3b">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-runtime-1.0.4_b4c1308db255f5cd86c38e6d8783844ad24a08c7\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.0.4\9c8d1a5d2eea3c9a7f58baa1a2fa11498cb41d0\kotlin-stdlib-1.0.4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="09c8d1a5d2eea3c9a7f58baa1a2fa11498cb41d0">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-stdlib-1.0.4_39797ed93d6478721c35b3d07637216261f18b82\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\libs\core-3.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="799dbb722a0a58825d3fd553ab75d5e47dcc4641">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\2\core-3.0.1_e1c0677e2e2c71b1077a57fe3598b735d4784e82\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_8eb5d7b58a1bb55756fad7c7f73c0b4fe812b56a\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_1ac52836b3ce7c44a99bc82cb354b897da5a5389\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.7\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="1478a113f04bf0b679037b4f6bd88bd1837b96a3">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.zhanghai.android.materialprogressbar-library-1.1.7_52a2feef9732766fd400bae270b45878470696b1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_967490f83aa7f1ad008c80e218a7cb4f5a60b779\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.7\69d90fd7fb70e54746e26c10454c220e40a775ce\otto-1.3.7.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="69d90fd7fb70e54746e26c10454c220e40a775ce">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\otto-1.3.7_b07ae434efc37e96f2cc02764d9fe926fec7b8b6\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.vkondrav.swiftadapter\swift-adapter\0.2.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
+        revision="25.0.0"
         sha1="752867ff7c95e80022c39c7e7f400a8be91fe188">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.vkondrav.swiftadapter-swift-adapter-0.2.0_0ce00e233be8ae6940abf1cadbd63175a27db167\classes.dex" />
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.vkondrav.swiftadapter-swift-adapter-0.2.0_f53295355e605c3d94f5490f49d0a9edffa053cb\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.databinding\library\1.2.1\jars\classes.jar"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\commons\0.9.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="24.0.0"
+        revision="25.0.0"
+        sha1="cee98beed542ecad574ef4cbdc5e2d7244ea9661">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.afollestad.material-dialogs-commons-0.9.0.1_023c866f6b3b776bd29afcff2775a4760f2c1ea9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_725f4ed83f246375879e4225669d30b6a6753ffc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-24.2.1_4942bc490015448a315dc4b75c10fc7596c215aa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\me.zhanghai.android.materialprogressbar\library\1.1.7\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1478a113f04bf0b679037b4f6bd88bd1837b96a3">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.zhanghai.android.materialprogressbar-library-1.1.7_b02b163b9a6d85a0cc6a0e5c0a9bf6ba17d17f24\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-24.2.1_787dbb588065252372073aeec311f4fd6a0ffe1e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-24.2.1_b2e303814762f169ff3d02aebce2f283b9aa847c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\retrofit\2.1.0\2de7cd8b95b7021b1d597f049bcb422055119f2c\retrofit-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2de7cd8b95b7021b1d597f049bcb422055119f2c">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\retrofit-2.1.0_a593a07e5bedcb534d058c7795bef620678965b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-24.2.1_d15d433ef0aafd4e8a20d813faf4eb3e545ae378\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2251930beba2fb23d99b37a9a5de57c430897c77">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_6e4c511ee38cfa028742945a3a505490aec76462\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\gun0912.ted\tedpermission\1.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b5b075fd42793be1d5fb8f12fb29fdce3597f6c3">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\gun0912.ted-tedpermission-1.0.0_420ff72310b3b05a5c8e115e07495ade78dc0b6c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.squareup\otto\1.3.7\69d90fd7fb70e54746e26c10454c220e40a775ce\otto-1.3.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="69d90fd7fb70e54746e26c10454c220e40a775ce">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\otto-1.3.7_a3a6f3e18e7bf20d5f273b12f60566cff3697fe7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.databinding\library\1.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="957dc30b1495f8689271e00d56ab09cc9192df02">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-library-1.2.1_056e0c3a31f0afee62cab89410833e3da2e1e61f\classes.dex" />
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-library-1.2.1_855d0f61139c2ac3ae46a40d6d12fb66c92d0bec\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="24.0.0"
-        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_cea6b50ff7fb7f7661f2b1bb99d888ecd2e04f41\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_0dd29fa1b0eb3efd3409bec646592ab09e09a6e1\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="H:\Android\Project\Safood\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.0"
+        revision="25.0.0"
         sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_c462216acbea81cf4cd752c73a0132d3b2591557\classes.dex" />
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-24.2.1_1f7edbfeee6caed8878ab9faa2a471b2dad22c6c\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Junseok\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.github.nitrico.lastadapter\lastadapter\1.2.3\jars\classes.jar"
         jumboMode="true"
         optimize="true"
-        revision="24.0.0"
+        revision="25.0.0"
+        sha1="8ed4579d5af464ba0653f07a2b3c2cadf51bb904">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.nitrico.lastadapter-lastadapter-1.2.3_38afd4e531551c4d8a9d0dc6f04a1f4c267694f0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-24.2.1_23b158b197e6582ec8f4fb9748552471e38d362c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-24.2.1_3b00623d0f3120ef4e6aef8be80ba4a33f4c66a9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-24.2.1_fb3c1ca436ef3073b62b73dea2509427f8adfff4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-24.2.1_44c16b943a2959f0945b08cafe3cd20dbfc30a2c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.7\751f548c85fa49f330cecbb1875893f971b33c4e\gson-2.7.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\gson-2.7_0c6efed1bbee143bd67b065af774f96f5236fca7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_2f7917bdfb98e6ac1eb2f42b467c2c4eebb45f9d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\libs\core-3.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="799dbb722a0a58825d3fd553ab75d5e47dcc4641">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\2\core-3.0.1_d02ed9363c3cdc58694ceb939857d564f74e62e0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-stdlib\1.0.4\9c8d1a5d2eea3c9a7f58baa1a2fa11498cb41d0\kotlin-stdlib-1.0.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09c8d1a5d2eea3c9a7f58baa1a2fa11498cb41d0">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-stdlib-1.0.4_b3930cad8822e80d49745d869dcee7e33a7f2491\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_1e4dd87d3de4b162e38c34ebf05cbeafbc7bcc5d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-24.2.1_75d8232bd9f0edab49cdc859f15a695dc12ac3f9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Program Files\Android\Android Studio\gradle\m2repository\com\android\databinding\baseLibrary\2.2.3\baseLibrary-2.2.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b4b51d1925cdfda98fd861230c1ecb5855500129">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\baseLibrary-2.2.3_8bc637fcca1e0a3556ffc9576dbd2dded58abbcb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.8.0\5ea7af56cc7c567ed9856d99efb30740e9b17ff\okio-1.8.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="05ea7af56cc7c567ed9856d99efb30740e9b17ff">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.8.0_4675d84fcb5c94b89d1ce97bf73522b45d95ccbd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.mcxiaoke.volley\library\1.0.19\a8f23f65fc1e522ee4a1a697ee569901a46741fa\library-1.0.19.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a8f23f65fc1e522ee4a1a697ee569901a46741fa">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-1.0.19_e066f3468a3aede5a9080c339dc668d12bf97b9b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.databinding\adapters\1.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c56d29136c2257f63f08c29c4e739efb03b06c7d">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.databinding-adapters-1.2.1_4f3a81a859afa1e1b5da71168e0adfa72dfcbaa9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\org.jetbrains.kotlin\kotlin-runtime\1.0.4\8e25da5e31669f5acf514bdd99b94ff5c7003b3b\kotlin-runtime-1.0.4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8e25da5e31669f5acf514bdd99b94ff5c7003b3b">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\kotlin-runtime-1.0.4_408a98b72b2a777087478b8ec9eda5183e1a58a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="6b17a97f0f288daa3ceda0e9c127e2a5706cca29">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_67a5dd9fc7df2755b691dfed40cf8f7b67e0a05d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-24.2.1_907de678ca5243e43d596932853e62e4911c33b2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.afollestad.material-dialogs\core\0.9.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="acc33023966f868dfe3ecb77a3ce5676dc8de92d">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.afollestad.material-dialogs-core-0.9.0.1_72e846ccf642d0432c2e46ab810ebaedb40c77ec\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-24.2.1_7029828f4cefffa7163984854ea6af98ecbcd873\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_86468326b0a491d7505f4f45575bd2d732b239c6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_749dcbc6c5db810c135df8da2d9914999e3616e9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit2\converter-gson\2.1.0\aa557d71ead91cbf26e0c316a0f593d168303309\converter-gson-2.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="aa557d71ead91cbf26e0c316a0f593d168303309">
-        <dex dex="H:\Android\Project\Safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.1.0_9c23a5d79f3bc5abf4af9e2e826dabf14a60719c\classes.dex" />
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\converter-gson-2.1.0_a03779e546458cd2c85f77601f0dcefc185253f7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Junseok Oh\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.3.0\2b802460eea20f8f2ad9c08c74e0f14718e88aa9\okhttp-3.3.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="2b802460eea20f8f2ad9c08c74e0f14718e88aa9">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.3.0_1f737b6830ba64510819cf296cd6d45fa13352e2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\SDK\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Junseok Oh\Desktop\Sources\Android\safood\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_6a7deaf27e22e1097dffc0ba309f7193154e47f1\classes.dex" />
     </item>
 
 </items>

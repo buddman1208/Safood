@@ -1,5 +1,6 @@
 package kr.edcan.safood.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -46,6 +47,7 @@ import kr.edcan.safood.databinding.MainGroupmemoBinding;
 import kr.edcan.safood.databinding.MainInfoBinding;
 import kr.edcan.safood.databinding.MainSafoodBinding;
 import kr.edcan.safood.databinding.MainSearchBinding;
+import kr.edcan.safood.databinding.NewfolderViewBinding;
 import kr.edcan.safood.models.Food;
 import kr.edcan.safood.models.GroupMemo;
 import kr.edcan.safood.models.SafoodContentData;
@@ -120,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
         ArrayList<ArrayList<SafoodContentData>> contentArr = new ArrayList<>();
         MainSafoodAdapter adapter;
+        MaterialDialog.Builder newFolder;
         CartaTagView[] arr;
         boolean hasLaunched = false;
         SlidingExpandableListView listview;
@@ -161,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+            setDefault(inflater);
             ViewDataBinding binding = null;
             Log.e("asdf", getArguments().getInt(ARG_SECTION_NUMBER) + " Page");
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
@@ -180,6 +184,56 @@ public class MainActivity extends AppCompatActivity {
             }
             setPage(binding, container, getArguments().getInt(ARG_SECTION_NUMBER), inflater);
             return binding.getRoot();
+        }
+
+        public void setDefault(LayoutInflater inflater) {
+            final NewfolderViewBinding binding = DataBindingUtil.inflate(inflater, R.layout.newfolder_view, null, false);
+            newFolder = new MaterialDialog.Builder(getContext())
+                    .title("새로운 안전한 음식 카테고리 추가")
+                    .customView(binding.getRoot(), false).positiveText("생성").onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            String groupName = binding.editText.getText().toString().trim();
+                            if (!groupName.equals("")) {
+                                NetworkHelper.getNetworkInstance().newSafoodGroup(
+                                        groupName,
+                                        new DataManager(getContext()).getActiveUser().second.getApikey(),
+                                        0
+                                ).enqueue(new Callback<ArrayList<SafoodGroup>>() {
+                                    @Override
+                                    public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
+                                        switch (response.code()) {
+                                            case 200:
+                                                Toast.makeText(getContext(), "폴더가 생성되었습니다!", Toast.LENGTH_SHORT).show();
+                                                setSafoodList(response.body(), listview, true);
+                                                binding.errorMessage.setVisibility(View.GONE);
+                                                break;
+                                            case 409:
+                                                binding.errorMessage.setText("이미 해당 이름을 가진 폴더가 있습니다!");
+                                                binding.errorMessage.setVisibility(View.VISIBLE);
+                                                newFolder.show();
+                                        }
+                                        binding.editText.setText("");
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ArrayList<SafoodGroup>> call, Throwable t) {
+                                        Log.e("asdf", t.getMessage());
+                                    }
+                                });
+                            } else {
+                                binding.errorMessage.setVisibility(View.VISIBLE);
+                                binding.errorMessage.setText("공백 없이 입력해주세요!");
+                                newFolder.show();
+                                binding.editText.setText("");
+                            }
+                        }
+                    }).cancelListener(new DialogInterface.OnCancelListener() {
+                        @Override
+                        public void onCancel(DialogInterface dialog) {
+                            binding.errorMessage.setVisibility(View.GONE);
+                        }
+                    });
         }
 
         private void setSafoodList(ArrayList<SafoodGroup> arrayList, final SlidingExpandableListView listview, boolean append) {
@@ -223,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        private void setPage(ViewDataBinding binding, final ViewGroup container, int position, LayoutInflater inflater) {
+        private void setPage(ViewDataBinding binding, final ViewGroup container, int position, final LayoutInflater inflater) {
             switch (position) {
                 case 0:
                     MainSafoodBinding safoodBinding = (MainSafoodBinding) binding;
@@ -256,34 +310,7 @@ public class MainActivity extends AppCompatActivity {
                     safoodBinding.newSafoodGroup.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.newfolder_view, null, false);
-                            final EditText text = (EditText) dialogView.findViewById(R.id.editText);
-                            new MaterialDialog.Builder(getContext())
-                                    .title("새로운 폴더 추가")
-                                    .customView(dialogView, false).positiveText("생성").onPositive(new MaterialDialog.SingleButtonCallback() {
-                                @Override
-                                public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    NetworkHelper.getNetworkInstance().newSafoodGroup(
-                                            text.getText().toString().trim(),
-                                            new DataManager(getContext()).getActiveUser().second.getApikey(),
-                                            0
-                                    ).enqueue(new Callback<ArrayList<SafoodGroup>>() {
-                                        @Override
-                                        public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
-                                            switch (response.code()) {
-                                                case 200:
-                                                    Toast.makeText(getContext(), "폴더가 생성되었습니다!", Toast.LENGTH_SHORT).show();
-                                                    setSafoodList(response.body(), listview, true);
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<ArrayList<SafoodGroup>> call, Throwable t) {
-
-                                        }
-                                    });
-                                }
-                            }).show();
+                            newFolder.show();
                         }
                     });
                     break;
