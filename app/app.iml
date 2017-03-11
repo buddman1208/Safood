@@ -105,6 +105,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.clans/fab/1.6.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.nitrico.lastadapter/lastadapter/1.2.3/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.vkondrav.swiftadapter/swift-adapter/0.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/gun0912.ted/tedpermission/1.0.0/jars" />
@@ -118,7 +119,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant-run-support" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifests" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/pre-dexed" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/reload-dex" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/res" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/restart-dex" />
@@ -165,6 +165,7 @@
     <orderEntry type="library" exported="" name="converter-gson-2.1.0" level="project" />
     <orderEntry type="library" exported="" name="guava-17.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.2.1" level="project" />
+    <orderEntry type="library" exported="" name="fab-1.6.4" level="project" />
     <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" name="kotlin-runtime-1.0.4" level="project" />
     <orderEntry type="library" exported="" name="okhttp-3.3.0" level="project" />

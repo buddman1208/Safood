@@ -102,6 +102,12 @@
                     android:paddingTop="10dp"
                     android:text="기타"
                     app:themeColor="@color/colorPrimary" />
+
+                <android.support.v4.widget.Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1" />
             </LinearLayout>
 
             <LinearLayout
@@ -268,6 +274,18 @@
                         android:text="간장"
 
                         app:themeColor="@color/colorPrimary" />
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1" />
+
+                    <android.support.v4.widget.Space
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
             </LinearLayout>
