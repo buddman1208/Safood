@@ -103,6 +103,7 @@ public class CartaTagView extends TextView {
 
     public void setFullMode(boolean fullMode) {
         this.fullMode = fullMode;
+        setView();
         requestLayout();
     }
 

@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
         ArrayList<ArrayList<SafoodContentData>> contentArr = new ArrayList<>();
         MainSafoodAdapter adapter;
+        CartaTagView[] arr;
         boolean hasLaunched = false;
         SlidingExpandableListView listview;
 
@@ -315,9 +316,10 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onBind(@NotNull Object o, @NotNull View view, int i, int i1) {
                                                     GroupmemoGridBinding binding = DataBindingUtil.getBinding(view);
-                                                    binding.title.setText(((GroupMemo) o).getTitle());
-                                                    binding.content.setText(((GroupMemo) o).getContent());
-                                                    binding.foods.setText(((GroupMemo) o).getFoods().size() + " 개의 음식");
+                                                    GroupMemo data = (GroupMemo) o;
+                                                    binding.title.setText(data.getTitle());
+                                                    binding.content.setText(data.getContent());
+                                                    binding.foods.setText(data.getFoods().size() + " 개의 음식");
                                                 }
                                             })
                                             .onClickListener(new LastAdapter.OnClickListener() {
@@ -343,17 +345,17 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 3:
                     MainInfoBinding infoBinding = (MainInfoBinding) binding;
-                    CartaTagView[] arr = {
-                            infoBinding.c1,
-                            infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5, infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15
+                    arr = new CartaTagView[]{
+                            infoBinding.c1, infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5, infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15
                     };
-                    for (final CartaTagView c : arr)
-                        c.setOnClickListener(new View.OnClickListener() {
+                    for (CartaTagView anArr : arr) {
+                        anArr.setOnClickListener(new View.OnClickListener() {
                             @Override
-                            public void onClick(View view) {
-                                c.setFullMode(!c.getFullMode());
+                            public void onClick(View v) {
+                                ((CartaTagView) v).setFullMode(!((CartaTagView) v).getFullMode());
                             }
                         });
+                    }
                     break;
             }
         }
