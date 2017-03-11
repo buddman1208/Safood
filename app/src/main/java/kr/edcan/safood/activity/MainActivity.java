@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
     // DataBindings
     public ActivityMainBinding binding;
-    public MainSearchBinding mainSearchBinding;
-    public MainSafoodBinding mainSafoodBinding;
-
     // Widgets
     SlidingExpandableListView slidingListView;
     ViewPager pager;
@@ -84,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainSearchBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_search, null, true);
-        mainSafoodBinding = DataBindingUtil.inflate(getLayoutInflater(), R.layout.main_safood, null, true);
         setDefault();
     }
 
@@ -255,14 +250,16 @@ public class MainActivity extends AppCompatActivity {
             listview.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
                 @Override
                 public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                    View view = adapter.getGroupView(groupPosition, true, null, null);
-                    RelativeLayout bottomIndicator = (RelativeLayout) view.findViewById(R.id.mainListGroupBottomIndicator);
-                    if (listview.isGroupExpanded(groupPosition)) {
-                        bottomIndicator.setVisibility(View.INVISIBLE);
-                        listview.collapseGroupWithAnimation(groupPosition);
-                    } else {
-                        bottomIndicator.setVisibility(View.VISIBLE);
-                        listview.expandGroupWithAnimation(groupPosition);
+                    if (titleArr.get(groupPosition).getContentSize() != 0) {
+                        View view = adapter.getGroupView(groupPosition, true, null, null);
+                        RelativeLayout bottomIndicator = (RelativeLayout) view.findViewById(R.id.mainListGroupBottomIndicator);
+                        if (listview.isGroupExpanded(groupPosition)) {
+                            bottomIndicator.setVisibility(View.INVISIBLE);
+                            listview.collapseGroupWithAnimation(groupPosition);
+                        } else {
+                            bottomIndicator.setVisibility(View.VISIBLE);
+                            listview.expandGroupWithAnimation(groupPosition);
+                        }
                     }
                     return true;
                 }

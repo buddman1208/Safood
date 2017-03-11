@@ -1,7 +1,8 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -9,9 +10,9 @@
             android:id="@+id/mainExpandableListView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
             android:background="#FFF"
             android:divider="@null"
+            android:layout_weight="1"
             android:fitsSystemWindows="true"
             android:groupIndicator="@null" />
         <LinearLayout
@@ -43,9 +44,9 @@
                 android:layout_weight="1"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
-                android:text="새로운 폴더 추가"
+                android:text="새로운 카테고리 추가"
                 android:textStyle="bold"
                 app:themeColor="#FFF" />
         </LinearLayout>
-    </RelativeLayout>
+    </LinearLayout>
 </layout>
