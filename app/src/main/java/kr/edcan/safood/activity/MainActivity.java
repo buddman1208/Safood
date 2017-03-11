@@ -2,6 +2,7 @@ package kr.edcan.safood.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -121,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         MainSafoodAdapter adapter;
         boolean hasLaunched = false;
         SlidingExpandableListView listview;
+
         public static MainFragment newInstance(int pageNum) {
             Bundle args = new Bundle();
             MainFragment fragment = new MainFragment();
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onResume() {
             super.onResume();
-            if(hasLaunched){
+            if (hasLaunched) {
                 Call<ArrayList<SafoodGroup>> getSafoodGroupList = NetworkHelper.getNetworkInstance().getSafoodGroupList(new DataManager(getContext()).getActiveUser().second.getApikey());
                 getSafoodGroupList.enqueue(new Callback<ArrayList<SafoodGroup>>() {
                     @Override
@@ -158,23 +160,25 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-            View view = null;
+            ViewDataBinding binding = null;
+            Log.e("asdf", getArguments().getInt(ARG_SECTION_NUMBER) + " Page");
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 0:
-                    view = inflater.inflate(R.layout.main_safood, container, false);
+                    binding = DataBindingUtil.inflate(inflater, R.layout.main_safood, container, false);
+                    binding.setVariable(BR._all, "asdf");
                     break;
                 case 1:
-                    view = inflater.inflate(R.layout.main_groupmemo, container, false);
+                    binding = DataBindingUtil.inflate(inflater, R.layout.main_groupmemo, container, false);
                     break;
                 case 2:
-                    view = inflater.inflate(R.layout.main_foodencyclopedia, container, false);
+                    binding = DataBindingUtil.inflate(inflater, R.layout.main_foodencyclopedia, container, false);
                     break;
                 case 3:
-                    view = inflater.inflate(R.layout.main_info, container, false);
+                    binding = DataBindingUtil.inflate(inflater, R.layout.main_info, container, false);
                     break;
             }
-            setPage(view, container, getArguments().getInt(ARG_SECTION_NUMBER), inflater);
-            return view;
+            setPage(binding, container, getArguments().getInt(ARG_SECTION_NUMBER), inflater);
+            return binding.getRoot();
         }
 
         private void setSafoodList(ArrayList<SafoodGroup> arrayList, final SlidingExpandableListView listview, boolean append) {
@@ -218,18 +222,18 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        private void setPage(View view, final ViewGroup container, int position, LayoutInflater inflater) {
+        private void setPage(ViewDataBinding binding, final ViewGroup container, int position, LayoutInflater inflater) {
             switch (position) {
                 case 0:
-                    listview = (SlidingExpandableListView) view.findViewById(R.id.mainExpandableListView);
-                    view.findViewById(R.id.editSafoodGroup).setOnClickListener(new View.OnClickListener() {
+                    MainSafoodBinding safoodBinding = (MainSafoodBinding) binding;
+                    listview = safoodBinding.mainExpandableListView;
+                    safoodBinding.editSafoodGroup.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             Toast.makeText(getContext(), "항목을 길게 눌러 삭제할 수 있습니다.", Toast.LENGTH_SHORT).show();
                         }
                     });
-                    Call<ArrayList<SafoodGroup>> getSafoodGroupList = NetworkHelper.getNetworkInstance().getSafoodGroupList(new DataManager(getContext()).getActiveUser().second.getApikey());
-                    getSafoodGroupList.enqueue(new Callback<ArrayList<SafoodGroup>>() {
+                    NetworkHelper.getNetworkInstance().getSafoodGroupList(new DataManager(getContext()).getActiveUser().second.getApikey()).enqueue(new Callback<ArrayList<SafoodGroup>>() {
                         @Override
                         public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
                             switch (response.code()) {
@@ -248,8 +252,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
-                    CartaTagView newFolder = (CartaTagView) view.findViewById(R.id.newSafoodGroup);
-                    newFolder.setOnClickListener(new View.OnClickListener() {
+                    safoodBinding.newSafoodGroup.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.newfolder_view, null, false);
@@ -259,12 +262,11 @@ public class MainActivity extends AppCompatActivity {
                                     .customView(dialogView, false).positiveText("생성").onPositive(new MaterialDialog.SingleButtonCallback() {
                                 @Override
                                 public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
-                                    Call<ArrayList<SafoodGroup>> addSafoodGroup = NetworkHelper.getNetworkInstance().newSafoodGroup(
-                                            text.getText().toString().trim().toString(),
+                                    NetworkHelper.getNetworkInstance().newSafoodGroup(
+                                            text.getText().toString().trim(),
                                             new DataManager(getContext()).getActiveUser().second.getApikey(),
                                             0
-                                    );
-                                    addSafoodGroup.enqueue(new Callback<ArrayList<SafoodGroup>>() {
+                                    ).enqueue(new Callback<ArrayList<SafoodGroup>>() {
                                         @Override
                                         public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
                                             switch (response.code()) {
@@ -285,25 +287,23 @@ public class MainActivity extends AppCompatActivity {
                     });
                     break;
                 case 1:
-                    CartaTagView newMemo = (CartaTagView) view.findViewById(R.id.newMemo);
-                    newMemo.setOnClickListener(new View.OnClickListener() {
+                    final MainGroupmemoBinding groupmemoBinding = (MainGroupmemoBinding) binding;
+                    groupmemoBinding.newMemo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             startActivity(new Intent(v.getContext(), NewGroupMemoActivity.class));
                         }
                     });
-                    final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+                    groupmemoBinding.recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                     final ArrayList<GroupMemo> arrayList = new ArrayList<>();
-                    Call<ArrayList<GroupMemo>> getMemo = NetworkHelper.getNetworkInstance().getGroupMemo(
+                    NetworkHelper.getNetworkInstance().getGroupMemo(
                             new DataManager(getContext()).getActiveUser().second.getGroupid()
-                    );
-                    getMemo.enqueue(new Callback<ArrayList<GroupMemo>>() {
+                    ).enqueue(new Callback<ArrayList<GroupMemo>>() {
                         @Override
                         public void onResponse(Call<ArrayList<GroupMemo>> call, Response<ArrayList<GroupMemo>> response) {
-                            switch (response.code()){
+                            switch (response.code()) {
                                 case 200:
                                     arrayList.addAll(response.body());
-                                    recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
                                     LastAdapter.with(arrayList, BR._all)
                                             .layoutHandler(new LastAdapter.LayoutHandler() {
                                                 @Override
@@ -317,17 +317,17 @@ public class MainActivity extends AppCompatActivity {
                                                     GroupmemoGridBinding binding = DataBindingUtil.getBinding(view);
                                                     binding.title.setText(((GroupMemo) o).getTitle());
                                                     binding.content.setText(((GroupMemo) o).getContent());
-                                                    binding.foods.setText(((GroupMemo) o).getFoods().size()+" 개의 음식");
+                                                    binding.foods.setText(((GroupMemo) o).getFoods().size() + " 개의 음식");
                                                 }
                                             })
                                             .onClickListener(new LastAdapter.OnClickListener() {
                                                 @Override
                                                 public void onClick(@NotNull Object o, @NotNull View view, int i, int i1) {
                                                     startActivity(new Intent(getContext(), GroupMemoActivity.class)
-                                                    .putExtra("json", new Gson().toJson(o)));
+                                                            .putExtra("json", new Gson().toJson(o)));
                                                 }
                                             })
-                                            .into(recyclerView);
+                                            .into(groupmemoBinding.recyclerview);
                                     break;
                                 default:
                                     break;
@@ -336,23 +336,24 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<ArrayList<GroupMemo>> call, Throwable t) {
-
+                            Log.e("asdf", t.getMessage());
                         }
                     });
 
                     break;
                 case 3:
-                    MainInfoBinding b = DataBindingUtil.inflate(LayoutInflater.from(getContext()),R.layout.main_info, null, false);
+                    MainInfoBinding infoBinding = (MainInfoBinding) binding;
                     CartaTagView[] arr = {
-                            b.c1,
-                            b.c2, b.c3, b.c4, b.c5, b.c6, b.c7, b.c8, b.c9, b.c10, b.c11, b.c12, b.c13, b.c14, b.c15
+                            infoBinding.c1,
+                            infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5, infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15
                     };
-                    for(final CartaTagView c : arr) c.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            c.setFullMode(!c.getFullMode());
-                        }
-                    });
+                    for (final CartaTagView c : arr)
+                        c.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                c.setFullMode(!c.getFullMode());
+                            }
+                        });
                     break;
             }
         }
