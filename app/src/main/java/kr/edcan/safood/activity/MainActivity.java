@@ -120,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
     public static class MainFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "pageNumber";
         boolean hasLaunched = false;
+        boolean hasMemoLaunched = false;
         ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
         ArrayList<ArrayList<SafoodContentData>> contentArr = new ArrayList<>();
         MainSafoodAdapter adapter;
@@ -128,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         CartaTagView[] arr;
         SlidingExpandableListView listview;
         TextView statusText;
+        MainGroupmemoBinding memoBinding;
         public static MainFragment newInstance(int pageNum) {
             Bundle args = new Bundle();
             MainFragment fragment = new MainFragment();
@@ -160,6 +162,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
+            }
+            if(hasMemoLaunched){
+                setMemo(memoBinding);
             }
         }
 
@@ -286,7 +291,54 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+        private void setMemo(final MainGroupmemoBinding groupmemoBinding){
+            final ArrayList<GroupMemo> arrayList = new ArrayList<>();
+            NetworkHelper.getNetworkInstance().getGroupMemo(
+                    new DataManager(getContext()).getActiveUser().second.getGroupid()
+            ).enqueue(new Callback<ArrayList<GroupMemo>>() {
+                @Override
+                public void onResponse(Call<ArrayList<GroupMemo>> call, Response<ArrayList<GroupMemo>> response) {
+                    switch (response.code()) {
+                        case 200:
+                            arrayList.addAll(response.body());
+                            LastAdapter.with(arrayList, BR._all)
+                                    .layoutHandler(new LastAdapter.LayoutHandler() {
+                                        @Override
+                                        public int getItemLayout(@NotNull Object o, int i) {
+                                            return R.layout.groupmemo_grid;
+                                        }
+                                    })
+                                    .onBindListener(new LastAdapter.OnBindListener() {
+                                        @Override
+                                        public void onBind(@NotNull Object o, @NotNull View view, int i, int i1) {
+                                            GroupmemoGridBinding binding = DataBindingUtil.getBinding(view);
+                                            GroupMemo data = (GroupMemo) o;
+                                            binding.title.setText(data.getTitle());
+                                            binding.content.setText(data.getContent());
+                                            binding.foods.setText(data.getFoods().size() + " 개의 음식");
+                                        }
+                                    })
+                                    .onClickListener(new LastAdapter.OnClickListener() {
+                                        @Override
+                                        public void onClick(@NotNull Object o, @NotNull View view, int i, int i1) {
+                                            startActivity(new Intent(getContext(), GroupMemoActivity.class)
+                                                    .putExtra("json", new Gson().toJson(o)));
+                                        }
+                                    })
+                                    .into(groupmemoBinding.recyclerview);
+                            break;
+                        default:
+                            break;
+                    }
+                }
 
+                @Override
+                public void onFailure(Call<ArrayList<GroupMemo>> call, Throwable t) {
+                    Log.e("asdf", t.getMessage());
+                }
+            });
+            hasMemoLaunched = true;
+        }
         private void setPage(ViewDataBinding binding, int position) {
             switch (position) {
                 case 0:
@@ -320,60 +372,15 @@ public class MainActivity extends AppCompatActivity {
                     });
                     break;
                 case 1:
-                    final MainGroupmemoBinding groupmemoBinding = (MainGroupmemoBinding) binding;
-                    groupmemoBinding.newMemo.setOnClickListener(new View.OnClickListener() {
+                    memoBinding = (MainGroupmemoBinding) binding;
+                    memoBinding.newMemo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             startActivity(new Intent(v.getContext(), NewGroupMemoActivity.class));
                         }
                     });
-                    groupmemoBinding.recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-                    final ArrayList<GroupMemo> arrayList = new ArrayList<>();
-                    NetworkHelper.getNetworkInstance().getGroupMemo(
-                            new DataManager(getContext()).getActiveUser().second.getGroupid()
-                    ).enqueue(new Callback<ArrayList<GroupMemo>>() {
-                        @Override
-                        public void onResponse(Call<ArrayList<GroupMemo>> call, Response<ArrayList<GroupMemo>> response) {
-                            switch (response.code()) {
-                                case 200:
-                                    arrayList.addAll(response.body());
-                                    LastAdapter.with(arrayList, BR._all)
-                                            .layoutHandler(new LastAdapter.LayoutHandler() {
-                                                @Override
-                                                public int getItemLayout(@NotNull Object o, int i) {
-                                                    return R.layout.groupmemo_grid;
-                                                }
-                                            })
-                                            .onBindListener(new LastAdapter.OnBindListener() {
-                                                @Override
-                                                public void onBind(@NotNull Object o, @NotNull View view, int i, int i1) {
-                                                    GroupmemoGridBinding binding = DataBindingUtil.getBinding(view);
-                                                    GroupMemo data = (GroupMemo) o;
-                                                    binding.title.setText(data.getTitle());
-                                                    binding.content.setText(data.getContent());
-                                                    binding.foods.setText(data.getFoods().size() + " 개의 음식");
-                                                }
-                                            })
-                                            .onClickListener(new LastAdapter.OnClickListener() {
-                                                @Override
-                                                public void onClick(@NotNull Object o, @NotNull View view, int i, int i1) {
-                                                    startActivity(new Intent(getContext(), GroupMemoActivity.class)
-                                                            .putExtra("json", new Gson().toJson(o)));
-                                                }
-                                            })
-                                            .into(groupmemoBinding.recyclerview);
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<ArrayList<GroupMemo>> call, Throwable t) {
-                            Log.e("asdf", t.getMessage());
-                        }
-                    });
-
+                    memoBinding.recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+                    setMemo(memoBinding);
                     break;
                 case 2:
                     MainInfoBinding infoBinding = (MainInfoBinding) binding;
