@@ -27,6 +27,7 @@ import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         MaterialDialog.Builder newFolder;
         CartaTagView[] arr;
         SlidingExpandableListView listview;
-
+        TextView statusText;
         public static MainFragment newInstance(int pageNum) {
             Bundle args = new Bundle();
             MainFragment fragment = new MainFragment();
@@ -145,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
                         switch (response.code()) {
                             case 200:
-                                setSafoodList(response.body(), listview, false);
+                                setSafoodList(response.body(), listview, false, statusText);
                                 break;
                             default:
                                 break;
@@ -166,23 +167,18 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
             setDefault(inflater);
             ViewDataBinding binding = null;
-            Log.e("asdf", getArguments().getInt(ARG_SECTION_NUMBER) + " Page");
             switch (getArguments().getInt(ARG_SECTION_NUMBER)) {
                 case 0:
                     binding = DataBindingUtil.inflate(inflater, R.layout.main_safood, container, false);
-                    binding.setVariable(BR._all, "asdf");
                     break;
                 case 1:
                     binding = DataBindingUtil.inflate(inflater, R.layout.main_groupmemo, container, false);
                     break;
                 case 2:
-                    binding = DataBindingUtil.inflate(inflater, R.layout.main_foodencyclopedia, container, false);
-                    break;
-                case 3:
                     binding = DataBindingUtil.inflate(inflater, R.layout.main_info, container, false);
                     break;
             }
-            setPage(binding, container, getArguments().getInt(ARG_SECTION_NUMBER), inflater);
+            setPage(binding, getArguments().getInt(ARG_SECTION_NUMBER));
             return binding.getRoot();
         }
 
@@ -210,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                                         switch (response.code()) {
                                             case 200:
                                                 Toast.makeText(getContext(), "폴더가 생성되었습니다!", Toast.LENGTH_SHORT).show();
-                                                setSafoodList(response.body(), listview, true);
+                                                setSafoodList(response.body(), listview, true, statusText);
                                                 binding.errorMessage.setVisibility(View.GONE);
                                                 break;
                                             case 409:
@@ -241,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
                     });
         }
 
-        private void setSafoodList(ArrayList<SafoodGroup> arrayList, final SlidingExpandableListView listview, boolean append) {
+        private void setSafoodList(ArrayList<SafoodGroup> arrayList, final SlidingExpandableListView listview, boolean append, TextView statusText) {
             hasLaunched = true;
             titleArr.clear();
             contentArr.clear();
@@ -252,6 +248,13 @@ public class MainActivity extends AppCompatActivity {
                     data.add(new SafoodContentData(f.getFoodName()));
                 }
                 contentArr.add(data);
+            }
+            if(titleArr.size() == 0){
+                listview.setVisibility(View.GONE);
+                statusText.setVisibility(View.VISIBLE);
+            } else {
+                listview.setVisibility(View.VISIBLE);
+                statusText.setVisibility(View.GONE);
             }
             if (!append)
                 adapter = new MainSafoodAdapter(getContext(), titleArr, contentArr);
@@ -284,23 +287,18 @@ public class MainActivity extends AppCompatActivity {
             });
         }
 
-        private void setPage(ViewDataBinding binding, final ViewGroup container, int position, final LayoutInflater inflater) {
+        private void setPage(ViewDataBinding binding, int position) {
             switch (position) {
                 case 0:
                     MainSafoodBinding safoodBinding = (MainSafoodBinding) binding;
+                    statusText = safoodBinding.statusText;
                     listview = safoodBinding.mainExpandableListView;
-                    safoodBinding.editSafoodGroup.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Toast.makeText(getContext(), "항목을 길게 눌러 삭제할 수 있습니다.", Toast.LENGTH_SHORT).show();
-                        }
-                    });
                     NetworkHelper.getNetworkInstance().getSafoodGroupList(new DataManager(getContext()).getActiveUser().second.getApikey()).enqueue(new Callback<ArrayList<SafoodGroup>>() {
                         @Override
                         public void onResponse(Call<ArrayList<SafoodGroup>> call, Response<ArrayList<SafoodGroup>> response) {
                             switch (response.code()) {
                                 case 200:
-                                    setSafoodList(response.body(), listview, false);
+                                    setSafoodList(response.body(), listview, false, statusText);
                                     break;
                                 default:
                                     break;
@@ -377,7 +375,7 @@ public class MainActivity extends AppCompatActivity {
                     });
 
                     break;
-                case 3:
+                case 2:
                     MainInfoBinding infoBinding = (MainInfoBinding) binding;
                     arr = new CartaTagView[]{
                             infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15, infoBinding.c1, infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5
@@ -460,7 +458,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
 
         @Override
