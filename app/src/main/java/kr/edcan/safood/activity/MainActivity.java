@@ -109,12 +109,12 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), CameraActivity.class));
             }
         });
-        binding.mainNavButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                binding.mainDrawer.openDrawer(GravityCompat.START);
-            }
-        });
+//        binding.mainNavButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                binding.mainDrawer.openDrawer(GravityCompat.START);
+//            }
+//        });
     }
 
 
