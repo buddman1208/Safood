@@ -54,6 +54,7 @@ import kr.edcan.safood.models.GroupMemo;
 import kr.edcan.safood.models.SafoodContentData;
 import kr.edcan.safood.models.SafoodGroup;
 import kr.edcan.safood.models.SafoodTitleData;
+import kr.edcan.safood.models.User;
 import kr.edcan.safood.utils.DataManager;
 import kr.edcan.safood.utils.NetworkHelper;
 import kr.edcan.safood.utils.SafoodHelper;
@@ -381,6 +382,13 @@ public class MainActivity extends AppCompatActivity {
                     arr = new CartaTagView[]{
                             infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15, infoBinding.c1, infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5
                     };
+                    User.Exception exception = new DataManager(getContext()).getActiveUser().second.getException();
+                    for (int i = 0; i < 10; i++) {
+                        arr[i].setFullMode(exception.getAllergy().get(i).equals("true"));
+                    }
+                    for (int i = 10; i < arr.length; i++) {
+                        arr[i].setFullMode(exception.getReligion().get(i - 10).equals("true"));
+                    }
                     for (CartaTagView anArr : arr) {
                         anArr.setOnClickListener(new View.OnClickListener() {
                             @Override
