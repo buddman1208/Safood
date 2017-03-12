@@ -60,6 +60,7 @@ import kr.edcan.safood.utils.SafoodHelper;
 import kr.edcan.safood.utils.StringUtils;
 import kr.edcan.safood.views.CartaTagView;
 import kr.edcan.safood.views.SlidingExpandableListView;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -116,12 +117,13 @@ public class MainActivity extends AppCompatActivity {
 
     public static class MainFragment extends Fragment {
         private static final String ARG_SECTION_NUMBER = "pageNumber";
+        boolean hasLaunched = false;
         ArrayList<SafoodTitleData> titleArr = new ArrayList<>();
         ArrayList<ArrayList<SafoodContentData>> contentArr = new ArrayList<>();
         MainSafoodAdapter adapter;
+        MaterialDialog loading;
         MaterialDialog.Builder newFolder;
         CartaTagView[] arr;
-        boolean hasLaunched = false;
         SlidingExpandableListView listview;
 
         public static MainFragment newInstance(int pageNum) {
@@ -184,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public void setDefault(LayoutInflater inflater) {
+            loading = new MaterialDialog.Builder(inflater.getContext())
+                    .title("로딩중입니다.")
+                    .cancelable(false)
+                    .progress(true, 0)
+                    .build();
             final NewfolderViewBinding binding = DataBindingUtil.inflate(inflater, R.layout.newfolder_view, null, false);
             newFolder = new MaterialDialog.Builder(getContext())
                     .title("새로운 안전한 음식 카테고리 추가")
@@ -385,15 +392,44 @@ public class MainActivity extends AppCompatActivity {
                     infoBinding.saveFab.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            ArrayList<Boolean> allergic = new ArrayList<Boolean>(), religious = new ArrayList<Boolean>();
+                            final ArrayList<Boolean> allergic = new ArrayList<Boolean>(), religious = new ArrayList<Boolean>();
                             for (int i = 0; i < 10; i++) {
                                 allergic.add(arr[i].getFullMode());
                             }
                             for (int i = 10; i < arr.length; i++) {
                                 religious.add(arr[i].getFullMode());
                             }
+                            final String query = StringUtils.convertExceptionArray(allergic, religious);
+                            new MaterialDialog.Builder(v.getContext())
+                                    .title("정보를 저장하시겠습니까?")
+                                    .positiveText("확인")
+                                    .positiveColor(getResources().getColor(R.color.colorPrimary))
+                                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                                        @Override
+                                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                                            loading.show();
+                                            NetworkHelper.getNetworkInstance().updateException(new DataManager(getContext()).getActiveUser().second.getApikey(), query)
+                                                    .enqueue(new Callback<ResponseBody>() {
+                                                        @Override
+                                                        public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                                            loading.dismiss();
+                                                            switch (response.code()) {
+                                                                case 200:
+                                                                    Toast.makeText(getContext(), "데이터가 저장되었습니다.", Toast.LENGTH_SHORT).show();
+                                                                    break;
+                                                                default:
+                                                                    Toast.makeText(getContext(), "서버와의 연동에 문제가 발생했습니다.", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                            Log.e("asdf", response.code() + "");
+                                                        }
 
-                            StringUtils.convertExceptionArray(allergic, religious);
+                                                        @Override
+                                                        public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                                            Log.e("asdf", t.getMessage());
+                                                        }
+                                                    });
+                                        }
+                                    }).show();
                         }
                     });
                     break;
