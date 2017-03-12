@@ -299,9 +299,10 @@
             android:id="@+id/saveFab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:src="@drawable/btn_save"
             app:fab_colorNormal="@color/colorPrimary"
             app:fab_colorPressed="@color/colorPrimaryRipple"
-            android:layout_gravity="right"
             app:fab_shadowRadius="5dp" />
     </LinearLayout>
 </layout>

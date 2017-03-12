@@ -9,9 +9,10 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="56a27022-a917-4977-b697-5cf50b691a57" name="Default" comment="">
+    <list default="true" id="56a27022-a917-4977-b697-5cf50b691a57" name="Default" comment="hide navigation drawer button at mainactivity">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/btn_save.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_info.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_info.xml" />
     </list>
     <ignored path="safood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,11 +47,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="88" column="67" selection-start-line="88" selection-start-column="67" selection-end-line="88" selection-end-column="67" />
+            <state relative-caret-position="601">
+              <caret line="184" column="76" selection-start-line="184" selection-start-column="76" selection-end-line="184" selection-end-column="76" />
               <folding>
                 <element signature="e#14181#14513#0" expanded="true" />
                 <element signature="e#14512#14513#0" expanded="true" />
@@ -69,6 +70,19 @@
                 <element signature="e#23423#23424#0" expanded="true" />
                 <element signature="e#23488#23489#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main_info.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_info.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="288" column="31" selection-start-line="288" selection-start-column="31" selection-end-line="288" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1956,7 +1970,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/newfolder_view.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/main_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main_safood.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main_groupmemo.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkInterface.java" />
@@ -1966,6 +1979,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_child.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/main_info.xml" />
       </list>
     </option>
   </component>
@@ -2039,6 +2053,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="safood" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="drawable" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2597,7 +2629,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489340951103</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="hide navigation drawer button at mainactivity">
+      <created>1489340983532</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1489340983532</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2619,7 +2658,7 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292541" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3292541" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901832" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3322546" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -2668,7 +2707,8 @@
     <MESSAGE value="show red background on popup when food is unsafe" />
     <MESSAGE value="disable click on child -&gt; we cant fix right now" />
     <MESSAGE value="disable thumbnail image at child" />
-    <option name="LAST_COMMIT_MESSAGE" value="disable thumbnail image at child" />
+    <MESSAGE value="hide navigation drawer button at mainactivity" />
+    <option name="LAST_COMMIT_MESSAGE" value="hide navigation drawer button at mainactivity" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2829,17 +2869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
           <caret line="31" column="51" selection-start-line="31" selection-start-column="51" selection-end-line="31" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_info.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3096,8 +3125,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="88" column="67" selection-start-line="88" selection-start-column="67" selection-end-line="88" selection-end-column="67" />
+        <state relative-caret-position="601">
+          <caret line="184" column="76" selection-start-line="184" selection-start-column="76" selection-end-line="184" selection-end-column="76" />
           <folding>
             <element signature="e#14181#14513#0" expanded="true" />
             <element signature="e#14512#14513#0" expanded="true" />
@@ -3116,6 +3145,17 @@
             <element signature="e#23423#23424#0" expanded="true" />
             <element signature="e#23488#23489#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_info.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="288" column="31" selection-start-line="288" selection-start-column="31" selection-end-line="288" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
