@@ -15,9 +15,9 @@
 
 
             <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:color/transparent"
-                android:layout_width="match_parent"
                 android:orientation="vertical">
 
                 <android.support.design.widget.AppBarLayout
@@ -37,7 +37,8 @@
                             android:layout_height="match_parent"
                             android:background="?attr/selectableItemBackground"
                             android:padding="16dp"
-                            android:src="@drawable/btn_actionbar_nav" />
+                            android:src="@drawable/btn_actionbar_nav"
+                            android:visibility="gone" />
 
                         <TextView
                             android:id="@+id/mainAppBarTitle"
