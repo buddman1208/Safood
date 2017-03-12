@@ -2,6 +2,7 @@ package kr.edcan.safood.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import kr.edcan.safood.databinding.ActivityGroupMemoBinding;
 import kr.edcan.safood.models.GroupMemo;
 import kr.edcan.safood.models.User;
 import kr.edcan.safood.utils.ImageSingleton;
+import kr.edcan.safood.utils.StringUtils;
 import kr.edcan.safood.views.RoundImageView;
 
 public class GroupMemoActivity extends AppCompatActivity {
@@ -35,7 +37,7 @@ public class GroupMemoActivity extends AppCompatActivity {
 
     private void setAppbarLayout() {
         setSupportActionBar(binding.toolbar);
-        binding.toolbar.setTitleTextColor(getResources().getColor(R.color.colorPrimary));
+        binding.toolbar.setTitleTextColor(Color.WHITE);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("메모 보기");
     }
@@ -45,12 +47,13 @@ public class GroupMemoActivity extends AppCompatActivity {
         memo = new Gson().fromJson(intent.getStringExtra("json"), GroupMemo.class);
         binding.title.setText(memo.getTitle());
         binding.content.setText(memo.getContent());
-        for(String s : memo.getFoods()){
+        binding.topBackground.setBackgroundColor(Color.parseColor("#" + StringUtils.getMemoColorCode(memo.getColor())));
+        for (String s : memo.getFoods()) {
             LinearLayout parent = binding.foodContainer;
             View addtarget = getLayoutInflater().inflate(R.layout.food_memo_foodadd, null, false);
-            RoundImageView imageView = (RoundImageView) addtarget.findViewById(R.id.image);
             TextView title = (TextView) addtarget.findViewById(R.id.text);
             title.setText(s);
+            RoundImageView imageView = (RoundImageView) addtarget.findViewById(R.id.image);
             imageView.setVisibility(View.GONE);
             parent.addView(addtarget);
         }
@@ -58,7 +61,7 @@ public class GroupMemoActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
                 break;
