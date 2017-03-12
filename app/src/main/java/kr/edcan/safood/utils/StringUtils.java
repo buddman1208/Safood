@@ -48,7 +48,6 @@ public class StringUtils {
             builder.append(religiousException.get(i));
             if (i != religiousException.size() - 1) builder.append(",");
         }
-        Log.e("asdf", builder.toString());
         return builder.toString();
     }
 
