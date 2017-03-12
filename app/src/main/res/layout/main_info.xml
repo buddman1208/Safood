@@ -59,7 +59,6 @@
                     android:layout_weight="1"
                     android:paddingBottom="10dp"
                     android:paddingTop="10dp"
-
                     android:text="불교"
                     app:themeColor="@color/colorPrimary" />
 
@@ -290,5 +289,19 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/saveFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimaryRipple"
+            android:layout_gravity="right"
+            app:fab_shadowRadius="5dp" />
     </LinearLayout>
 </layout>

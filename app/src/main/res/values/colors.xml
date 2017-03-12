@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4484f6</color>
+    <color name="colorPrimaryRipple">#6498F4</color>
     <color name="colorPrimaryDark">#3669E9</color>
     <color name="colorAccent">#4484f6</color>
     <color name="commonTextColor">#a9a9a9</color>

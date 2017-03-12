@@ -65,15 +65,10 @@ public interface NetworkInterface {
             @Part("profileImage") RequestBody imageFile
     );
 
-    @POST("/user/updateAllergicException")
+    @POST("/user/updateException")
     @FormUrlEncoded
-    Call<ResponseBody> updateAllergicException(
-            @Field("apikey") String apikey, @Field("allergic") int allergicPos);
-
-    @POST("/user/updateReligiousException")
-    @FormUrlEncoded
-    Call<ResponseBody> updateReligiousException(
-            @Field("apikey") String apikey, @Field("religious") int religiousPos);
+    Call<ResponseBody> updateException(
+            @Field("apikey") String apikey, @Field("query") String query);
 
     @POST("/user/addKeywordException")
     @FormUrlEncoded

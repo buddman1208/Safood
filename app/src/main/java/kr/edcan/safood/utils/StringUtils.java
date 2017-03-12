@@ -1,5 +1,6 @@
 package kr.edcan.safood.utils;
 
+import android.util.Log;
 import android.widget.EditText;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class StringUtils {
     }
 
     public static String getFullImageUrl(String thumbnailUrl) {
-        return "http://kafuuchino.one:4000" + thumbnailUrl;
+        return "http://iwin247.kr:4000" + thumbnailUrl;
     }
 
     public static String convertArraytoString(ArrayList<String> arrayList) {
@@ -34,6 +35,21 @@ public class StringUtils {
             result += (arrayList.get(i) + ((i == arrayList.size() - 1) ? "" : ","));
         }
         return result;
+    }
+
+    public static String convertExceptionArray(ArrayList<Boolean> allergicException, ArrayList<Boolean> religiousException) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < allergicException.size(); i++) {
+            builder.append(allergicException.get(i));
+            if (i != allergicException.size() - 1) builder.append(",");
+        }
+        builder.append("+");
+        for (int i = 0; i < religiousException.size(); i++) {
+            builder.append(religiousException.get(i));
+            if (i != religiousException.size() - 1) builder.append(",");
+        }
+        Log.e("asdf", builder.toString());
+        return builder.toString();
     }
 
 }

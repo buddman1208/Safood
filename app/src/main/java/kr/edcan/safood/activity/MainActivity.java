@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -56,6 +57,7 @@ import kr.edcan.safood.models.SafoodTitleData;
 import kr.edcan.safood.utils.DataManager;
 import kr.edcan.safood.utils.NetworkHelper;
 import kr.edcan.safood.utils.SafoodHelper;
+import kr.edcan.safood.utils.StringUtils;
 import kr.edcan.safood.views.CartaTagView;
 import kr.edcan.safood.views.SlidingExpandableListView;
 import retrofit2.Call;
@@ -370,7 +372,7 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     MainInfoBinding infoBinding = (MainInfoBinding) binding;
                     arr = new CartaTagView[]{
-                            infoBinding.c1, infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5, infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15
+                            infoBinding.c6, infoBinding.c7, infoBinding.c8, infoBinding.c9, infoBinding.c10, infoBinding.c11, infoBinding.c12, infoBinding.c13, infoBinding.c14, infoBinding.c15, infoBinding.c1, infoBinding.c2, infoBinding.c3, infoBinding.c4, infoBinding.c5
                     };
                     for (CartaTagView anArr : arr) {
                         anArr.setOnClickListener(new View.OnClickListener() {
@@ -380,6 +382,20 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
                     }
+                    infoBinding.saveFab.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ArrayList<Boolean> allergic = new ArrayList<Boolean>(), religious = new ArrayList<Boolean>();
+                            for (int i = 0; i < 10; i++) {
+                                allergic.add(arr[i].getFullMode());
+                            }
+                            for (int i = 10; i < arr.length; i++) {
+                                religious.add(arr[i].getFullMode());
+                            }
+
+                            StringUtils.convertExceptionArray(allergic, religious);
+                        }
+                    });
                     break;
             }
         }
