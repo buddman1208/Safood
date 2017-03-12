@@ -285,13 +285,13 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             });
-            listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-                @Override
-                public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                    Toast.makeText(getContext(), "asdf", Toast.LENGTH_SHORT).show();
-                    return true;
-                }
-            });
+//            listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+//                @Override
+//                public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+//                    Toast.makeText(getContext(), "asdf", Toast.LENGTH_SHORT).show();
+//                    return true;
+//                }
+//            });
         }
 
         private void setMemo(final MainGroupmemoBinding groupmemoBinding) {

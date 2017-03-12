@@ -11,10 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="56a27022-a917-4977-b697-5cf50b691a57" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/StringUtils.java" afterPath="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/StringUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/groupmemo_grid.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/groupmemo_grid.xml" />
     </list>
     <ignored path="safood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,30 +45,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="178">
-              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+            <state relative-caret-position="691">
+              <caret line="293" column="17" selection-start-line="287" selection-start-column="44" selection-end-line="293" selection-end-column="17" />
               <folding>
-                <element signature="e#13056#13398#0" expanded="true" />
-                <element signature="e#13397#13398#0" expanded="true" />
-                <element signature="e#14167#14499#0" expanded="true" />
-                <element signature="e#14498#14499#0" expanded="true" />
-                <element signature="e#14553#15443#0" expanded="true" />
-                <element signature="e#15442#15443#0" expanded="true" />
-                <element signature="e#15498#15981#0" expanded="true" />
-                <element signature="e#15980#15981#0" expanded="true" />
-                <element signature="e#19594#19873#0" expanded="true" />
-                <element signature="e#19872#19873#0" expanded="true" />
-                <element signature="e#19957#23128#0" expanded="true" />
-                <element signature="e#20151#20160#0" expanded="true" />
-                <element signature="e#20189#20198#0" expanded="true" />
-                <element signature="e#20964#23071#0" expanded="true" />
-                <element signature="e#23070#23071#0" expanded="true" />
-                <element signature="e#23127#23128#0" expanded="true" />
-                <element signature="e#23409#23410#0" expanded="true" />
-                <element signature="e#23474#23475#0" expanded="true" />
+                <element signature="e#14181#14513#0" expanded="true" />
+                <element signature="e#14512#14513#0" expanded="true" />
+                <element signature="e#14567#15457#0" expanded="true" />
+                <element signature="e#15456#15457#0" expanded="true" />
+                <element signature="e#15512#15995#0" expanded="true" />
+                <element signature="e#15994#15995#0" expanded="true" />
+                <element signature="e#19608#19887#0" expanded="true" />
+                <element signature="e#19886#19887#0" expanded="true" />
+                <element signature="e#19971#23142#0" expanded="true" />
+                <element signature="e#20165#20174#0" expanded="true" />
+                <element signature="e#20203#20212#0" expanded="true" />
+                <element signature="e#20978#23085#0" expanded="true" />
+                <element signature="e#23084#23085#0" expanded="true" />
+                <element signature="e#23141#23142#0" expanded="true" />
+                <element signature="e#23423#23424#0" expanded="true" />
+                <element signature="e#23488#23489#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -108,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CameraActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CameraActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="314" column="162" selection-start-line="314" selection-start-column="162" selection-end-line="314" selection-end-column="162" />
+            <state relative-caret-position="380">
+              <caret line="322" column="27" selection-start-line="322" selection-start-column="27" selection-end-line="322" selection-end-column="27" />
               <folding>
                 <element signature="e#11732#12161#0" expanded="true" />
                 <element signature="e#12160#12161#0" expanded="true" />
@@ -1967,8 +1961,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/NetworkInterface.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/groupmemo_grid.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/StringUtils.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -2579,7 +2573,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489339218862</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="show red background on popup when food is unsafe">
+      <created>1489340848532</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1489340848532</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2647,7 +2648,8 @@
     <MESSAGE value="remove unused log" />
     <MESSAGE value="show statusText when safood arr size is 0" />
     <MESSAGE value="reload memo at onResume()" />
-    <option name="LAST_COMMIT_MESSAGE" value="reload memo at onResume()" />
+    <MESSAGE value="show red background on popup when food is unsafe" />
+    <option name="LAST_COMMIT_MESSAGE" value="show red background on popup when food is unsafe" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2669,24 +2671,22 @@
         <state relative-caret-position="5136">
           <caret line="385" column="0" selection-start-line="385" selection-start-column="0" selection-end-line="385" selection-end-column="0" />
           <folding>
-            <element signature="e#13056#13398#0" expanded="true" />
-            <element signature="e#13397#13398#0" expanded="true" />
-            <element signature="e#14167#14499#0" expanded="true" />
-            <element signature="e#14498#14499#0" expanded="true" />
-            <element signature="e#14553#15443#0" expanded="true" />
-            <element signature="e#15442#15443#0" expanded="true" />
-            <element signature="e#15498#15981#0" expanded="true" />
-            <element signature="e#15980#15981#0" expanded="true" />
-            <element signature="e#19594#19873#0" expanded="true" />
-            <element signature="e#19872#19873#0" expanded="true" />
-            <element signature="e#19957#23128#0" expanded="true" />
-            <element signature="e#20151#20160#0" expanded="true" />
-            <element signature="e#20189#20198#0" expanded="true" />
-            <element signature="e#20964#23071#0" expanded="true" />
-            <element signature="e#23070#23071#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23409#23410#0" expanded="true" />
-            <element signature="e#23474#23475#0" expanded="true" />
+            <element signature="e#14181#14513#0" expanded="true" />
+            <element signature="e#14512#14513#0" expanded="true" />
+            <element signature="e#14567#15457#0" expanded="true" />
+            <element signature="e#15456#15457#0" expanded="true" />
+            <element signature="e#15512#15995#0" expanded="true" />
+            <element signature="e#15994#15995#0" expanded="true" />
+            <element signature="e#19608#19887#0" expanded="true" />
+            <element signature="e#19886#19887#0" expanded="true" />
+            <element signature="e#19971#23142#0" expanded="true" />
+            <element signature="e#20165#20174#0" expanded="true" />
+            <element signature="e#20203#20212#0" expanded="true" />
+            <element signature="e#20978#23085#0" expanded="true" />
+            <element signature="e#23084#23085#0" expanded="true" />
+            <element signature="e#23141#23142#0" expanded="true" />
+            <element signature="e#23423#23424#0" expanded="true" />
+            <element signature="e#23488#23489#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2977,33 +2977,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
-          <folding>
-            <element signature="e#13056#13398#0" expanded="true" />
-            <element signature="e#13397#13398#0" expanded="true" />
-            <element signature="e#14167#14499#0" expanded="true" />
-            <element signature="e#14498#14499#0" expanded="true" />
-            <element signature="e#14553#15443#0" expanded="true" />
-            <element signature="e#15442#15443#0" expanded="true" />
-            <element signature="e#15498#15981#0" expanded="true" />
-            <element signature="e#15980#15981#0" expanded="true" />
-            <element signature="e#19594#19873#0" expanded="true" />
-            <element signature="e#19872#19873#0" expanded="true" />
-            <element signature="e#19957#23128#0" expanded="true" />
-            <element signature="e#20151#20160#0" expanded="true" />
-            <element signature="e#20189#20198#0" expanded="true" />
-            <element signature="e#20964#23071#0" expanded="true" />
-            <element signature="e#23070#23071#0" expanded="true" />
-            <element signature="e#23127#23128#0" expanded="true" />
-            <element signature="e#23409#23410#0" expanded="true" />
-            <element signature="e#23474#23475#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
       <provider editor-type-id="android-designer2">
         <state />
@@ -3071,11 +3044,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="314" column="162" selection-start-line="314" selection-start-column="162" selection-end-line="314" selection-end-column="162" />
+        <state relative-caret-position="380">
+          <caret line="322" column="27" selection-start-line="322" selection-start-column="27" selection-end-line="322" selection-end-column="27" />
           <folding>
             <element signature="e#11732#12161#0" expanded="true" />
             <element signature="e#12160#12161#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="293" column="17" selection-start-line="287" selection-start-column="44" selection-end-line="293" selection-end-column="17" />
+          <folding>
+            <element signature="e#14181#14513#0" expanded="true" />
+            <element signature="e#14512#14513#0" expanded="true" />
+            <element signature="e#14567#15457#0" expanded="true" />
+            <element signature="e#15456#15457#0" expanded="true" />
+            <element signature="e#15512#15995#0" expanded="true" />
+            <element signature="e#15994#15995#0" expanded="true" />
+            <element signature="e#19608#19887#0" expanded="true" />
+            <element signature="e#19886#19887#0" expanded="true" />
+            <element signature="e#19971#23142#0" expanded="true" />
+            <element signature="e#20165#20174#0" expanded="true" />
+            <element signature="e#20203#20212#0" expanded="true" />
+            <element signature="e#20978#23085#0" expanded="true" />
+            <element signature="e#23084#23085#0" expanded="true" />
+            <element signature="e#23141#23142#0" expanded="true" />
+            <element signature="e#23423#23424#0" expanded="true" />
+            <element signature="e#23488#23489#0" expanded="true" />
           </folding>
         </state>
       </provider>
