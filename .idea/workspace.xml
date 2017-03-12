@@ -11,6 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="56a27022-a917-4977-b697-5cf50b691a57" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_child.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_child.xml" />
     </list>
     <ignored path="safood.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,11 +46,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="293" column="17" selection-start-line="287" selection-start-column="44" selection-end-line="293" selection-end-column="17" />
+            <state relative-caret-position="293">
+              <caret line="266" column="38" selection-start-line="266" selection-start-column="38" selection-end-line="266" selection-end-column="38" />
               <folding>
                 <element signature="e#14181#14513#0" expanded="true" />
                 <element signature="e#14512#14513#0" expanded="true" />
@@ -68,6 +69,16 @@
                 <element signature="e#23423#23424#0" expanded="true" />
                 <element signature="e#23488#23489#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainSafoodAdapter.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/adapter/MainSafoodAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="443">
+              <caret line="78" column="100" selection-start-line="78" selection-start-column="100" selection-end-line="78" selection-end-column="100" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -136,16 +147,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="291">
               <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupMemoActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/GroupMemoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-224">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -1963,6 +1964,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/utils/StringUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/CameraActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_child.xml" />
       </list>
     </option>
   </component>
@@ -2580,7 +2582,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489340848532</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="disable click on child -&gt; we cant fix right now">
+      <created>1489340914153</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1489340914153</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -2649,7 +2658,8 @@
     <MESSAGE value="show statusText when safood arr size is 0" />
     <MESSAGE value="reload memo at onResume()" />
     <MESSAGE value="show red background on popup when food is unsafe" />
-    <option name="LAST_COMMIT_MESSAGE" value="show red background on popup when food is unsafe" />
+    <MESSAGE value="disable click on child -&gt; we cant fix right now" />
+    <option name="LAST_COMMIT_MESSAGE" value="disable click on child -&gt; we cant fix right now" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -2717,14 +2727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/adapter/MainSafoodAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -3053,10 +3055,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_content.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="28" column="55" selection-start-line="28" selection-start-column="55" selection-end-line="28" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/activity/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="293" column="17" selection-start-line="287" selection-start-column="44" selection-end-line="293" selection-end-column="17" />
+        <state relative-caret-position="293">
+          <caret line="266" column="38" selection-start-line="266" selection-start-column="38" selection-end-line="266" selection-end-column="38" />
           <folding>
             <element signature="e#14181#14513#0" expanded="true" />
             <element signature="e#14512#14513#0" expanded="true" />
@@ -3075,6 +3088,25 @@
             <element signature="e#23423#23424#0" expanded="true" />
             <element signature="e#23488#23489#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/main_safood_listview_group_child.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/kr/edcan/safood/adapter/MainSafoodAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="78" column="100" selection-start-line="78" selection-start-column="100" selection-end-line="78" selection-end-column="100" />
+          <folding />
         </state>
       </provider>
     </entry>
