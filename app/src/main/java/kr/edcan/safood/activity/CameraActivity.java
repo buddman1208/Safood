@@ -312,6 +312,7 @@ public class CameraActivity extends AppCompatActivity implements SurfaceHolder.C
                         TextView viewDetail = (TextView) view.findViewById(R.id.see);
                         imageview.setImageUrl(response.body().getThumbnail(), ImageSingleton.getInstance(CameraActivity.this).getImageLoader());
                         title.setText(response.body().getName());
+                        title.setBackgroundColor(getResources().getColor((response.body().getAllergy().size() == 0) ? R.color.colorPrimary : R.color.error_color));
                         viewDetail.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

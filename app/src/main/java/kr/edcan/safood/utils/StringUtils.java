@@ -51,4 +51,8 @@ public class StringUtils {
         return builder.toString();
     }
 
+    public static String getMemoColorCode(int colorIndex) {
+        return new String[]{"FF4536", "FF9427", "65D2F3", "FF928D", "FFE272"}[colorIndex];
+    }
+
 }

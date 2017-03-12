@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.BoolRes;
 import android.support.annotation.NonNull;
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
         SlidingExpandableListView listview;
         TextView statusText;
         MainGroupmemoBinding memoBinding;
+
         public static MainFragment newInstance(int pageNum) {
             Bundle args = new Bundle();
             MainFragment fragment = new MainFragment();
@@ -163,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
             }
-            if(hasMemoLaunched){
+            if (hasMemoLaunched) {
                 setMemo(memoBinding);
             }
         }
@@ -254,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 contentArr.add(data);
             }
-            if(titleArr.size() == 0){
+            if (titleArr.size() == 0) {
                 listview.setVisibility(View.GONE);
                 statusText.setVisibility(View.VISIBLE);
             } else {
@@ -291,7 +293,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        private void setMemo(final MainGroupmemoBinding groupmemoBinding){
+
+        private void setMemo(final MainGroupmemoBinding groupmemoBinding) {
             final ArrayList<GroupMemo> arrayList = new ArrayList<>();
             NetworkHelper.getNetworkInstance().getGroupMemo(
                     new DataManager(getContext()).getActiveUser().second.getGroupid()
@@ -315,7 +318,9 @@ public class MainActivity extends AppCompatActivity {
                                             GroupMemo data = (GroupMemo) o;
                                             binding.title.setText(data.getTitle());
                                             binding.content.setText(data.getContent());
+                                            binding.colorBG.setBackgroundColor(Color.parseColor("#" + StringUtils.getMemoColorCode(data.getColor())));
                                             binding.foods.setText(data.getFoods().size() + " 개의 음식");
+
                                         }
                                     })
                                     .onClickListener(new LastAdapter.OnClickListener() {
@@ -339,6 +344,7 @@ public class MainActivity extends AppCompatActivity {
             });
             hasMemoLaunched = true;
         }
+
         private void setPage(ViewDataBinding binding, int position) {
             switch (position) {
                 case 0:
